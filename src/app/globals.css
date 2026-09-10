@@ -1,0 +1,54 @@
+@import "tailwindcss";
+
+/*
+  INK & PAPER — design tokens
+  A reading room for the books of P Chendraya Perumal.
+
+  The palette is warm paper and charcoal ink, per the brief. The accent is a
+  deep, muted sepia-oxblood (leather-bound book) rather than the more common
+  clay-terracotta, so the site does not read as a templated literary landing.
+  Used sparingly: links, focus, and the occasional rule.
+*/
+@theme {
+  --color-paper: #f5f0e6;        /* warm cream — page background            */
+  --color-paper-raised: #fbf8f1; /* off-white — raised surfaces             */
+  --color-ink: #29251f;          /* charcoal — primary text (not pure black)*/
+  --color-ink-soft: #6c6457;     /* muted neutral — secondary text          */
+  --color-line: #e5dccb;         /* subtle divider / hairline               */
+  --color-accent: #7a4034;       /* deep sepia-oxblood — restrained accent  */
+
+  --font-serif: var(--font-newsreader), Georgia, "Times New Roman", serif;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system,
+    "Segoe UI", sans-serif;
+}
+
+:root {
+  color-scheme: light;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background-color: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background-color: color-mix(in srgb, var(--color-accent) 16%, transparent);
+}
+
+/* Respect reduced-motion as a baseline for the whole site. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}

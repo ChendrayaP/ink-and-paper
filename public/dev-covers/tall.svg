@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 620" width="400" height="620">
+  <rect width="400" height="620" fill="#2b2620"/>
+  <rect x="14" y="14" width="372" height="592" fill="none" stroke="#7a4034" stroke-width="2"/>
+  <text x="200" y="150" fill="#f5f0e6" font-family="Georgia,serif" font-size="34" text-anchor="middle">Sample</text>
+  <text x="200" y="196" fill="#f5f0e6" font-family="Georgia,serif" font-size="34" text-anchor="middle">Cover</text>
+  <text x="200" y="560" fill="#cbb98f" font-family="Georgia,serif" font-size="20" font-style="italic" text-anchor="middle">Author Name</text>
+</svg>

@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="500" height="500" role="img" aria-label="Sample cover">
+  <rect width="500" height="500" fill="#4a3b32"/>
+  <rect x="18" y="18" width="464" height="464" fill="none" stroke="#e8d9bf" stroke-width="1.5"/>
+  <text x="250" y="220" text-anchor="middle" fill="#f6efe2" font-family="Georgia, serif" font-size="40">Letters We</text>
+  <text x="250" y="268" text-anchor="middle" fill="#f6efe2" font-family="Georgia, serif" font-size="40">Never Sent</text>
+  <text x="250" y="452" text-anchor="middle" fill="#e8d9bf" font-family="Helvetica, Arial, sans-serif" font-size="15" letter-spacing="2">P CHENDRAYA PERUMAL</text>
+</svg>
