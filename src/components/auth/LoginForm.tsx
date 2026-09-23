@@ -15,8 +15,46 @@ export function LoginForm() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
+const [resetBusy, setResetBusy] = useState(false);
+const [resetMessage, setResetMessage] = useState<string | null>(null);
 
-  async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
+async function onForgotPassword() {
+  setError(null);
+  setResetMessage(null);
+
+  if (!email.trim()) {
+    setError("Please enter your email address first.");
+    return;
+  }
+
+  setResetBusy(true);
+
+  try {
+    const supabase = createClient();
+
+    const { error } = await supabase.auth.resetPasswordForEmail(
+      email.trim(),
+      {
+        redirectTo: `${window.location.origin}/`,
+      },
+    );
+
+    if (error) {
+      setError("We couldn't send the reset email. Please try again.");
+      return;
+    }
+
+    setResetMessage(
+      "If an account exists for this email, a password reset link has been sent.",
+    );
+  } catch {
+    setError("We couldn't send the reset email. Please try again.");
+  } finally {
+    setResetBusy(false);
+  }
+}
+
+async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setError(null);
     if (!email.trim() || !password) {
@@ -86,6 +124,22 @@ export function LoginForm() {
           />
         </div>
       </div>
+<div className="flex justify-end">
+  <button
+    type="button"
+    onClick={onForgotPassword}
+    disabled={resetBusy}
+    className="font-sans text-sm text-ink-soft underline decoration-ink-soft/40 underline-offset-4 transition-colors hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent disabled:opacity-60"
+  >
+    {resetBusy ? "Sending…" : "Forgot your password?"}
+  </button>
+</div>
+
+{resetMessage ? (
+  <p className="border-l-2 border-accent pl-4 font-sans text-sm text-ink">
+    {resetMessage}
+  </p>
+) : null}
 
       <button
         type="submit"
