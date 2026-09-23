@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { inter, newsreader } from "./fonts";
 import { siteConfig } from "@/lib/config";
+import { RecoveryGate } from "@/components/auth/RecoveryGate";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -26,7 +27,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${newsreader.variable} ${inter.variable}`}>
-      <body>{children}</body>
+      <body>
+  <RecoveryGate />
+  {children}
+</body>
     </html>
   );
 }
