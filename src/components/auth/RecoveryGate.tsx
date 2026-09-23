@@ -55,14 +55,9 @@ export function RecoveryGate() {
       if (data.session) go();
     });
 
-    // Fallback: forward to the reset page regardless; it shows an "expired link"
-    // state if the session could not be established.
-    const timer = setTimeout(go, 4000);
-
     return () => {
-      sub.subscription.unsubscribe();
-      clearTimeout(timer);
-    };
+  sub.subscription.unsubscribe();
+};
   }, [router]);
 
   if (!recovering) return null;
