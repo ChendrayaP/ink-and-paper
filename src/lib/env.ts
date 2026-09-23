@@ -18,7 +18,7 @@ function requireEnv(name: string, value: string | undefined): string {
 export const env = {
   /** Canonical site URL, no trailing slash. Defaults to localhost in dev. */
   NEXT_PUBLIC_SITE_URL:
-    process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ??
+    process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ||
     "http://localhost:3000",
 
   NEXT_PUBLIC_SUPABASE_URL: process.env.NEXT_PUBLIC_SUPABASE_URL ?? "",
