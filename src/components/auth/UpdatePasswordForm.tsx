@@ -24,32 +24,56 @@ export function UpdatePasswordForm() {
   const [resendMsg, setResendMsg] = useState<string | null>(null);
   const [resendBusy, setResendBusy] = useState(false);
 
-  // Establish whether we have a valid recovery session to update against.
+  // Establish a valid recovery session from Supabase's PKCE code.
   useEffect(() => {
     const supabase = createClient();
     let settled = false;
+
     const finish = (s: Status) => {
       if (!settled) {
         settled = true;
         setStatus(s);
       }
     };
-    const { data: sub } = supabase.auth.onAuthStateChange((_event, session) => {
-      if (session) finish("ready");
-    });
-    supabase.auth.getSession().then(({ data }) => {
+
+    const establishRecoverySession = async () => {
+      const code = new URLSearchParams(window.location.search).get("code");
+
+      if (code) {
+        const { error } = await supabase.auth.exchangeCodeForSession(code);
+
+        if (error) {
+          finish("invalid");
+          return;
+        }
+
+        window.history.replaceState(
+          null,
+          "",
+          window.location.pathname + window.location.hash,
+        );
+
+        finish("ready");
+        return;
+      }
+
+      const { data } = await supabase.auth.getSession();
+
       if (data.session) {
         finish("ready");
-      } else if (
-        typeof window !== "undefined" &&
-        /[#&]type=recovery/i.test(window.location.hash)
-      ) {
-        // Hash present but session not yet established — give detection a moment.
-        setTimeout(() => finish("invalid"), 3000);
       } else {
         finish("invalid");
       }
-    });
+    };
+
+    establishRecoverySession();
+
+    const { data: sub } = supabase.auth.onAuthStateChange(
+      (_event, session) => {
+        if (session) finish("ready");
+      },
+    );
+
     return () => sub.subscription.unsubscribe();
   }, []);
 
@@ -96,7 +120,7 @@ export function UpdatePasswordForm() {
     try {
       const supabase = createClient();
       await supabase.auth.resetPasswordForEmail(resendEmail.trim(), {
-        redirectTo: window.location.origin,
+        redirectTo: `${window.location.origin}/auth/update-password`,
       });
     } catch {
       /* fall through to the same neutral message */
