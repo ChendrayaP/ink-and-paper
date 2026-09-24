@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { inter, newsreader } from "./fonts";
 import { siteConfig } from "@/lib/config";
+import { OG_IMAGE_DEFAULT, OG_IMAGE_DIMENSIONS } from "@/lib/seo";
 import { RecoveryGate } from "@/components/auth/RecoveryGate";
 import "./globals.css";
 
@@ -17,6 +18,15 @@ export const metadata: Metadata = {
     title: `${siteConfig.brand} — ${siteConfig.author}`,
     description: siteConfig.description,
     url: siteConfig.url,
+    images: [
+      { url: OG_IMAGE_DEFAULT, ...OG_IMAGE_DIMENSIONS, alt: siteConfig.brand },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${siteConfig.brand} — ${siteConfig.author}`,
+    description: siteConfig.description,
+    images: [OG_IMAGE_DEFAULT],
   },
 };
 
@@ -28,9 +38,9 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${newsreader.variable} ${inter.variable}`}>
       <body>
-  <RecoveryGate />
-  {children}
-</body>
+        <RecoveryGate />
+        {children}
+      </body>
     </html>
   );
 }

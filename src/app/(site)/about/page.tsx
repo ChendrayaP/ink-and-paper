@@ -3,6 +3,8 @@ import { Container } from "@/components/ui/Container";
 import { AuthorNote } from "@/components/home/AuthorNote";
 import { getSiteSettings } from "@/lib/data/site";
 import { pageMetadata } from "@/lib/seo";
+import { personJsonLd } from "@/lib/structured-data";
+import { JsonLd } from "@/components/seo/JsonLd";
 
 export const revalidate = 300;
 
@@ -14,10 +16,12 @@ export function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function AboutPage() {
-  const { authorName } = await getSiteSettings();
+  const settings = await getSiteSettings();
+  const { authorName } = settings;
 
   return (
     <section className="py-16 sm:py-24">
+      <JsonLd data={personJsonLd(settings)} />
       <Container className="max-w-2xl">
         <p className="font-sans text-sm tracking-[0.18em] text-ink-soft">
           About the Author

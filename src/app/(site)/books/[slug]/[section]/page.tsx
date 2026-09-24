@@ -1,4 +1,4 @@
-﻿import type { Metadata } from "next";
+import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ReaderShell } from "@/components/reader/ReaderShell";
@@ -13,6 +13,9 @@ import {
   type ReaderMapRow,
 } from "@/lib/data/reader";
 import { getSiteSettings } from "@/lib/data/site";
+import { OG_IMAGE_DEFAULT, OG_IMAGE_DIMENSIONS, absoluteUrl } from "@/lib/seo";
+import { articleJsonLd, breadcrumbJsonLd } from "@/lib/structured-data";
+import { JsonLd } from "@/components/seo/JsonLd";
 
 export const revalidate = 300;
 
@@ -24,21 +27,33 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
     getReaderBook(slug),
     getSiteSettings(),
   ]);
-  if (!book) return { title: { absolute: `Not found â€” ${settings.siteName}` } };
+  if (!book) return { title: { absolute: `Not found — ${settings.siteName}` } };
   const sequence = await getBookSequence(book.id);
   const current = sequence.find((r) => r.path_segment === section);
-  if (!current) return { title: { absolute: `Not found â€” ${settings.siteName}` } };
+  if (!current) return { title: { absolute: `Not found — ${settings.siteName}` } };
 
-  const title = `${current.label} â€” ${book.title} â€” ${settings.siteName}`;
+  const title = `${current.label} — ${book.title} — ${settings.siteName}`;
+  const description = `${current.label} of ${book.title} by ${settings.authorName}.`;
+  const ogImage = book.cover_url
+    ? [{ url: absoluteUrl(book.cover_url), alt: book.title }]
+    : [{ url: OG_IMAGE_DEFAULT, ...OG_IMAGE_DIMENSIONS, alt: settings.siteName }];
   return {
     title: { absolute: title },
-    description: `${current.label} of ${book.title} by ${settings.authorName}.`,
+    description,
     alternates: { canonical: `/books/${book.slug}/${current.path_segment}` },
     openGraph: {
       type: "article",
       siteName: settings.siteName,
       title,
+      description,
       url: `/books/${book.slug}/${current.path_segment}`,
+      images: ogImage,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: ogImage.map((i) => i.url),
     },
   };
 }
@@ -64,7 +79,7 @@ function ContentsView({
             <span className="w-16 shrink-0 font-sans text-sm text-ink-soft">
               {c.chapter_number}
             </span>
-            <span className="font-serif text-lg text-ink">{c.title}</span>
+            <span className="font-serif text-lg text-ink">{c.label}</span>
           </Link>
         </li>
       ))}
@@ -86,9 +101,31 @@ export default async function SectionPage({ params }: Params) {
   if (!isContents && !sectionData) notFound();
 
   const isEndOfBook = current.next_path_segment === null;
+  const settings = await getSiteSettings();
+  const headline = sectionData?.title ?? current.label;
 
   return (
     <ReaderShell slug={book.slug} title={book.title} coverUrl={book.cover_url}>
+      <JsonLd
+        data={[
+          articleJsonLd({
+            headline,
+            slug: book.slug,
+            pathSegment: current.path_segment,
+            bookTitle: book.title,
+            authorName: settings.authorName,
+          }),
+          breadcrumbJsonLd([
+            { name: "Home", path: "/" },
+            { name: "Library", path: "/library" },
+            { name: book.title, path: `/books/${book.slug}` },
+            {
+              name: current.label,
+              path: `/books/${book.slug}/${current.path_segment}`,
+            },
+          ]),
+        ]}
+      />
       <article>
         <header>
           <Link

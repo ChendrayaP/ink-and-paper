@@ -1,4 +1,7 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
+import { websiteJsonLd } from "@/lib/structured-data";
+import { JsonLd } from "@/components/seo/JsonLd";
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
@@ -16,19 +19,10 @@ import { START_READING_HREF } from "@/lib/nav";
 export const revalidate = 300;
 
 export async function generateMetadata(): Promise<Metadata> {
-  const s = await getSiteSettings();
-  return {
-    title: { absolute: `${s.siteName} — ${s.authorName}` },
-    description: s.siteDescription,
-    alternates: { canonical: "/" },
-    openGraph: {
-      type: "website",
-      siteName: s.siteName,
-      title: `${s.siteName} — ${s.authorName}`,
-      description: s.siteDescription,
-      url: "/",
-    },
-  };
+  return pageMetadata({
+    absoluteTitle: (s) => `${s.siteName} — ${s.authorName}`,
+    path: "/",
+  });
 }
 
 export default async function HomePage() {
@@ -41,6 +35,7 @@ export default async function HomePage() {
 
   return (
     <>
+      <JsonLd data={websiteJsonLd(settings)} />
       <Hero description={settings.siteDescription} />
 
       {/* Featured / latest books */}

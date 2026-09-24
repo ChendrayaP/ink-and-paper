@@ -5,6 +5,9 @@ import { Container } from "@/components/ui/Container";
 import { BookCover } from "@/components/books/BookCover";
 import { getReaderBook, getBookSequence } from "@/lib/data/reader";
 import { getSiteSettings } from "@/lib/data/site";
+import { OG_IMAGE_DEFAULT, OG_IMAGE_DIMENSIONS, absoluteUrl } from "@/lib/seo";
+import { bookJsonLd, breadcrumbJsonLd } from "@/lib/structured-data";
+import { JsonLd } from "@/components/seo/JsonLd";
 
 export const revalidate = 300;
 
@@ -18,16 +21,27 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
   ]);
   if (!book) return { title: { absolute: `Not found — ${settings.siteName}` } };
   const title = `${book.title} — ${settings.authorName}`;
+  const description = book.subtitle ?? settings.siteDescription;
+  const ogImage = book.cover_url
+    ? [{ url: absoluteUrl(book.cover_url), alt: book.title }]
+    : [{ url: OG_IMAGE_DEFAULT, ...OG_IMAGE_DIMENSIONS, alt: settings.siteName }];
   return {
     title: { absolute: title },
-    description: book.subtitle ?? settings.siteDescription,
+    description,
     alternates: { canonical: `/books/${book.slug}` },
     openGraph: {
       type: "book",
       siteName: settings.siteName,
       title,
-      description: book.subtitle ?? settings.siteDescription,
+      description,
       url: `/books/${book.slug}`,
+      images: ogImage,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: ogImage.map((i) => i.url),
     },
   };
 }
@@ -56,6 +70,22 @@ export default async function BookRootPage({ params }: Params) {
 
   return (
     <Container className="py-16 sm:py-24">
+      <JsonLd
+        data={[
+          bookJsonLd({
+            title: book.title,
+            subtitle: book.subtitle,
+            coverUrl: book.cover_url,
+            slug: book.slug,
+            authorName: settings.authorName,
+          }),
+          breadcrumbJsonLd([
+            { name: "Home", path: "/" },
+            { name: "Library", path: "/library" },
+            { name: book.title, path: `/books/${book.slug}` },
+          ]),
+        ]}
+      />
       <div className="mx-auto flex max-w-3xl flex-col items-center text-center">
         <div className="flex h-[26rem] items-center justify-center">
           <BookCover src={book.cover_url} alt={book.title} className="h-full" />
