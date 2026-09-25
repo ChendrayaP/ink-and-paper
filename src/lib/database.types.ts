@@ -214,6 +214,36 @@ export type Database = {
         };
         Relationships: [];
       };
+      page_views: {
+        Row: {
+          id: number;
+          path: string;
+          kind: string;
+          book_slug: string | null;
+          section_path_segment: string | null;
+          viewed_at: string;
+          day: string;
+        };
+        Insert: {
+          id?: number;
+          path: string;
+          kind: string;
+          book_slug?: string | null;
+          section_path_segment?: string | null;
+          viewed_at?: string;
+          day?: string;
+        };
+        Update: {
+          id?: number;
+          path?: string;
+          kind?: string;
+          book_slug?: string | null;
+          section_path_segment?: string | null;
+          viewed_at?: string;
+          day?: string;
+        };
+        Relationships: [];
+      };
     };
     Views: {
       reading_sequence: {
@@ -254,6 +284,28 @@ export type Database = {
             referencedColumns: ["id"];
           },
         ];
+      };
+      analytics_daily: {
+        Row: {
+          day: string | null;
+          views: number | null;
+        };
+        Relationships: [];
+      };
+      analytics_top_paths: {
+        Row: {
+          path: string | null;
+          kind: string | null;
+          views: number | null;
+        };
+        Relationships: [];
+      };
+      analytics_book_views: {
+        Row: {
+          book_slug: string | null;
+          views: number | null;
+        };
+        Relationships: [];
       };
     };
     Functions: {

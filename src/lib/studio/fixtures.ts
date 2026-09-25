@@ -159,3 +159,36 @@ export const devStudioSettings = {
   contact_email: null as string | null,
   updated_at: now,
 };
+
+// Development-only analytics preview data (never used in production).
+export function devAnalytics() {
+  const daily: { day: string; views: number }[] = [];
+  const today = new Date();
+  const sample = [3,5,2,8,6,4,7,9,5,6,10,8,7,11,9,6,4,5,8,12,10,9,7,6,8,11,13,9,7,5];
+  for (let i = 29; i >= 0; i--) {
+    const d = new Date(today);
+    d.setUTCDate(today.getUTCDate() - i);
+    daily.push({ day: d.toISOString().slice(0, 10), views: sample[29 - i] ?? 0 });
+  }
+  const total = daily.reduce((a, b) => a + b.views, 0);
+  return {
+    summary: {
+      total,
+      today: daily[daily.length - 1].views,
+      last7: daily.slice(-7).reduce((a, b) => a + b.views, 0),
+      last30: total,
+    },
+    daily,
+    topPages: [
+      { path: "/", kind: "home", views: 42 },
+      { path: "/books/sample-first-long-evening", kind: "book", views: 31 },
+      { path: "/books/sample-first-long-evening/chapter-1", kind: "reader", views: 24 },
+      { path: "/library", kind: "library", views: 18 },
+      { path: "/books/sample-first-long-evening/epilogue", kind: "reader", views: 9 },
+    ],
+    bookViews: [
+      { bookSlug: "sample-first-long-evening", title: "The First Long Evening", views: 64 },
+      { bookSlug: "sample-the-long-year", title: "The Long Year", views: 21 },
+    ],
+  };
+}
