@@ -79,7 +79,7 @@ function ContentsView({
             <span className="w-16 shrink-0 font-sans text-sm text-ink-soft">
               {c.chapter_number}
             </span>
-            <span className="font-serif text-lg text-ink">{c.label}</span>
+            <span className="font-serif text-lg text-ink">{c.title}</span>
           </Link>
         </li>
       ))}

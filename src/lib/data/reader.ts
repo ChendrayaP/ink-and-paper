@@ -1,4 +1,4 @@
-﻿import { cache } from "react";
+import { cache } from "react";
 import type { Book, ReadingSequenceItem } from "@/lib/types";
 import { isSupabaseConfigured } from "@/lib/env";
 import { createPublicClient } from "@/lib/supabase/public";
@@ -11,12 +11,12 @@ export type ReaderBook = Pick<
 >;
 
 /** A lightweight sequence row (no manuscript content) used to build the map,
-    the contents list, and Previous/Next â€” all straight from the view. */
+    the contents list, and Previous/Next — all straight from the view. */
 export type ReaderMapRow = Pick<
   ReadingSequenceItem,
+  | "title"
   | "kind"
   | "path_segment"
-  | "title"
   | "label"
   | "chapter_number"
   | "total_chapters"
@@ -28,7 +28,7 @@ export type ReaderMapRow = Pick<
 >;
 
 const MAP_COLUMNS =
-  "kind, path_segment, title, label, chapter_number, total_chapters, sequence_position, prev_path_segment, prev_label, next_path_segment, next_label";
+  "title, kind, path_segment, label, chapter_number, total_chapters, sequence_position, prev_path_segment, prev_label, next_path_segment, next_label";
 
 /** A published book by slug, or null (drafts are invisible via RLS). */
 export const getReaderBook = cache(
@@ -60,14 +60,14 @@ export const getReaderBook = cache(
 );
 
 /** The whole reading sequence for a book (light rows), in reading order.
-    This is the map the reader navigates by â€” every value comes from the view. */
+    This is the map the reader navigates by — every value comes from the view. */
 export const getBookSequence = cache(
   async (bookId: string): Promise<ReaderMapRow[]> => {
     if (devFixturesEnabled()) {
       return devReaderSequence(bookId).map((r) => ({
+        title: r.title,
         kind: r.kind,
         path_segment: r.path_segment,
-      title: r.title,
         label: r.label,
         chapter_number: r.chapter_number,
         total_chapters: r.total_chapters,
@@ -125,7 +125,3 @@ export const getSectionContent = cache(
     }
   },
 );
-
-
-
-
