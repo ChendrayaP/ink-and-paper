@@ -8,7 +8,7 @@ export function Hero({ description }: { description: string }) {
   return (
     <section className="border-b border-line">
       <Container className="flex min-h-[62svh] max-w-3xl flex-col justify-center py-16 sm:py-20">
-        <h1 className="font-display font-medium tracking-tight text-display-hero text-ink">
+        <h1 className="font-display font-medium tracking-tight text-[clamp(2.5rem,4.6vw,4.25rem)] text-ink">
           Stories about people, memory, love, and loss — and the things we
           struggle to say aloud.
         </h1>
