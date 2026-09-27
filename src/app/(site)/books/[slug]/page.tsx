@@ -74,6 +74,7 @@ export default async function BookRootPage({ params }: Params) {
     .join("  ·  ");
 
   return (
+    <>
     <Container className="py-16 sm:py-24">
       <JsonLd
         data={[
@@ -126,16 +127,153 @@ export default async function BookRootPage({ params }: Params) {
         {orientation ? (
           <p className="mt-8 font-sans text-sm text-ink-soft">{orientation}</p>
         ) : null}
-
-        <div className="mt-14 border-t border-line pt-8">
-          <Link
-            href="/library"
-            className="font-sans text-sm text-ink-soft underline decoration-ink-soft/40 underline-offset-4 transition-colors hover:text-ink"
-          >
-            Back to the Library
-          </Link>
-        </div>
       </div>
     </Container>
+
+    {book.slug === "i-knew-you-before-we-met" ? (
+      <>
+        {/* Section 1 */}
+        <section className="border-t border-line">
+          <Container className="py-16 sm:py-20">
+            <div className="mx-auto max-w-2xl">
+              <h2 className="font-serif text-2xl leading-snug text-ink sm:text-3xl">
+                Some people feel familiar before they become known.
+              </h2>
+              <div className="mt-6 space-y-5 font-serif text-lg leading-relaxed text-ink-soft">
+                <p>
+                  What if the person you meet for the first time is someone your
+                  heart has somehow known forever?
+                </p>
+                <p>
+                  <em className="text-ink">I Knew You Before We Met</em> is a story
+                  about love, longing, connection and the strange feeling that some
+                  encounters are not beginnings at all—but reunions.
+                </p>
+                <p>
+                  It explores the invisible threads that draw two people toward each
+                  other, the memories we cannot explain, and the possibility that
+                  some bonds can cross the boundaries of time.
+                </p>
+                <p>Because sometimes, love doesn’t begin when two people meet.</p>
+                <p>Sometimes, meeting is simply when we remember.</p>
+              </div>
+              <div className="mt-8">
+                <Link
+                  href={`/books/${book.slug}/chapter-1`}
+                  className="inline-flex items-center gap-1.5 font-sans text-sm font-medium text-accent underline decoration-accent/30 underline-offset-4 transition-colors hover:decoration-accent"
+                >
+                  Start Chapter 1 <span aria-hidden="true">→</span>
+                </Link>
+              </div>
+            </div>
+          </Container>
+        </section>
+
+        {/* Section 2 */}
+        <section className="border-t border-line">
+          <Container className="py-16 sm:py-20">
+            <div className="mx-auto max-w-2xl">
+              <h2 className="font-serif text-2xl leading-snug text-ink sm:text-3xl">
+                Enter the story
+              </h2>
+              <div className="mt-6 space-y-5 font-serif text-lg leading-relaxed text-ink-soft">
+                <p>A story meant to be read slowly.</p>
+                <p>To wonder about.</p>
+                <p>To feel.</p>
+                <p>
+                  From the first chapter to the final page, follow a journey where
+                  love is not simply about finding someone—but about discovering why
+                  they feel so familiar.
+                </p>
+              </div>
+              <p className="mt-6 font-sans text-sm tracking-[0.12em] text-ink-soft">
+                12 Chapters · Introduction · Epilogue
+              </p>
+              <div className="mt-8">
+                <Link
+                  href={`/books/${book.slug}/contents`}
+                  className="inline-flex items-center gap-1.5 font-sans text-sm font-medium text-accent underline decoration-accent/30 underline-offset-4 transition-colors hover:decoration-accent"
+                >
+                  Explore the Contents <span aria-hidden="true">→</span>
+                </Link>
+              </div>
+            </div>
+          </Container>
+        </section>
+
+        {/* Section 3 */}
+        <section className="border-t border-line">
+          <Container className="py-16 sm:py-20">
+            <div className="mx-auto max-w-2xl">
+              <h2 className="font-serif text-2xl leading-snug text-ink sm:text-3xl">
+                About the Author
+              </h2>
+              <p className="mt-2 font-sans text-sm tracking-[0.14em] text-ink-soft">
+                P Chendraya Perumal
+              </p>
+              <div className="mt-6 space-y-5 font-serif text-lg leading-relaxed text-ink-soft">
+                <p>
+                  A writer drawn to stories that explore the emotions people carry
+                  quietly—their memories, relationships, choices, hopes and the
+                  things they struggle to put into words.
+                </p>
+                <p>
+                  Through his writing, P Chendraya Perumal seeks to create stories
+                  that stay with the reader long after the final page.
+                </p>
+              </div>
+              <div className="mt-8">
+                <Link
+                  href="/about"
+                  className="inline-flex items-center gap-1.5 font-sans text-sm font-medium text-accent underline decoration-accent/30 underline-offset-4 transition-colors hover:decoration-accent"
+                >
+                  Meet the Author <span aria-hidden="true">→</span>
+                </Link>
+              </div>
+            </div>
+          </Container>
+        </section>
+
+        {/* Final CTA */}
+        <section className="border-t border-line">
+          <Container className="py-20">
+            <div className="mx-auto max-w-2xl text-center">
+              <h2 className="font-serif text-2xl leading-snug text-ink sm:text-3xl">
+                Perhaps some stories are not meant to be discovered.
+              </h2>
+              <p className="mt-2 font-serif text-2xl leading-snug text-ink sm:text-3xl">
+                Perhaps they are meant to be remembered.
+              </p>
+              <p className="mt-10 font-serif text-3xl italic leading-tight text-ink sm:text-4xl">
+                I Knew You Before We Met
+              </p>
+              <p className="mt-3 font-serif text-lg italic text-ink-soft">
+                Begin the journey.
+              </p>
+              <div className="mt-8">
+                <Link
+                  href={`/books/${book.slug}/chapter-1`}
+                  className="inline-flex items-center justify-center rounded-[2px] bg-ink px-8 py-3.5 font-sans text-sm font-medium text-paper transition-colors hover:opacity-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+                >
+                  Start Reading
+                </Link>
+              </div>
+            </div>
+          </Container>
+        </section>
+      </>
+    ) : null}
+
+    <Container className="pb-16">
+      <div className="mx-auto max-w-3xl border-t border-line pt-8 text-center">
+        <Link
+          href="/library"
+          className="font-sans text-sm text-ink-soft underline decoration-ink-soft/40 underline-offset-4 transition-colors hover:text-ink"
+        >
+          Back to the Library
+        </Link>
+      </div>
+    </Container>
+    </>
   );
 }
