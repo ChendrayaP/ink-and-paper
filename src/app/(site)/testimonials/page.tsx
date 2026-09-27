@@ -23,7 +23,7 @@ export default async function TestimonialsPage() {
     <section className="py-16 sm:py-24">
       <Container>
         <header className="max-w-prose">
-          <h1 className="font-serif text-4xl leading-tight text-ink sm:text-5xl">
+          <h1 className="font-display font-medium tracking-tight text-4xl leading-tight text-ink sm:text-5xl">
             {TESTIMONIALS_HEADING}
           </h1>
           <p className="mt-4 font-serif text-lg italic text-ink-soft">

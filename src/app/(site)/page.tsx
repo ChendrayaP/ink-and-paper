@@ -104,7 +104,7 @@ export default async function HomePage() {
       {/* Invitation to explore + final CTA */}
       <section className="border-t border-line">
         <Container className="max-w-3xl py-24 text-balance">
-          <p className="font-serif text-3xl leading-tight text-ink sm:text-4xl">
+          <p className="font-display font-medium tracking-tight text-3xl leading-tight text-ink sm:text-4xl">
             Find a book. Open it. Stay a while.
           </p>
           <p className="mt-6 max-w-xl text-lg leading-relaxed text-ink-soft">

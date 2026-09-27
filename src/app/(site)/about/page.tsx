@@ -26,7 +26,7 @@ export default async function AboutPage() {
         <p className="font-sans text-sm tracking-[0.18em] text-ink-soft">
           About the Author
         </p>
-        <h1 className="mt-4 font-serif text-4xl leading-tight text-ink sm:text-5xl">
+        <h1 className="mt-4 font-display font-medium tracking-tight text-4xl leading-tight text-ink sm:text-5xl">
           {authorName}
         </h1>
 

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { inter, newsreader } from "./fonts";
+import { cormorantGaramond, inter, newsreader } from "./fonts";
 import { siteConfig } from "@/lib/config";
 import { OG_IMAGE_DEFAULT, OG_IMAGE_DIMENSIONS } from "@/lib/seo";
 import { RecoveryGate } from "@/components/auth/RecoveryGate";
@@ -36,7 +36,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${newsreader.variable} ${inter.variable}`}>
+    <html lang="en" className={`${newsreader.variable} ${inter.variable} ${cormorantGaramond.variable}`}>
       <body>
         <RecoveryGate />
         {children}

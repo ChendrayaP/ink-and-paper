@@ -17,6 +17,7 @@
   --color-line: #e5dccb;         /* subtle divider / hairline               */
   --color-accent: #7a4034;       /* deep sepia-oxblood — restrained accent  */
 
+  --font-display: var(--font-cormorant), Georgia, "Times New Roman", serif;
   --font-serif: var(--font-newsreader), Georgia, "Times New Roman", serif;
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system,
     "Segoe UI", sans-serif;

@@ -7,12 +7,12 @@ import { START_READING_HREF } from "@/lib/nav";
 export function Hero({ description }: { description: string }) {
   return (
     <section className="border-b border-line">
-      <Container className="max-w-3xl py-24 sm:py-32">
-        <h1 className="font-serif text-4xl leading-[1.15] text-ink sm:text-5xl">
+      <Container className="flex min-h-[62svh] max-w-3xl flex-col justify-center py-16 sm:py-20">
+        <h1 className="font-display font-medium tracking-tight text-display-hero text-ink">
           Stories about people, memory, love, and loss — and the things we
           struggle to say aloud.
         </h1>
-        <p className="mt-8 max-w-xl text-lg leading-relaxed text-ink-soft">
+        <p className="mt-6 max-w-xl text-[1.0625rem] leading-[1.75] text-ink-soft sm:text-lg">
           {description}
         </p>
         <div className="mt-10">

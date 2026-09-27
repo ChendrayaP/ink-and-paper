@@ -136,7 +136,7 @@ export default async function BookRootPage({ params }: Params) {
         <section className="border-t border-line">
           <Container className="py-16 sm:py-20">
             <div className="mx-auto max-w-2xl">
-              <h2 className="font-serif text-2xl leading-snug text-ink sm:text-3xl">
+              <h2 className="font-display font-medium tracking-tight text-2xl leading-snug text-ink sm:text-3xl">
                 Some people feel familiar before they become known.
               </h2>
               <div className="mt-6 space-y-5 font-serif text-lg leading-relaxed text-ink-soft">
@@ -173,7 +173,7 @@ export default async function BookRootPage({ params }: Params) {
         <section className="border-t border-line">
           <Container className="py-16 sm:py-20">
             <div className="mx-auto max-w-2xl">
-              <h2 className="font-serif text-2xl leading-snug text-ink sm:text-3xl">
+              <h2 className="font-display font-medium tracking-tight text-2xl leading-snug text-ink sm:text-3xl">
                 Enter the story
               </h2>
               <div className="mt-6 space-y-5 font-serif text-lg leading-relaxed text-ink-soft">
@@ -205,7 +205,7 @@ export default async function BookRootPage({ params }: Params) {
         <section className="border-t border-line">
           <Container className="py-16 sm:py-20">
             <div className="mx-auto max-w-2xl">
-              <h2 className="font-serif text-2xl leading-snug text-ink sm:text-3xl">
+              <h2 className="font-display font-medium tracking-tight text-2xl leading-snug text-ink sm:text-3xl">
                 About the Author
               </h2>
               <p className="mt-2 font-sans text-sm tracking-[0.14em] text-ink-soft">
@@ -238,13 +238,13 @@ export default async function BookRootPage({ params }: Params) {
         <section className="border-t border-line">
           <Container className="py-20">
             <div className="mx-auto max-w-2xl text-center">
-              <h2 className="font-serif text-2xl leading-snug text-ink sm:text-3xl">
+              <h2 className="font-display font-medium tracking-tight text-2xl leading-snug text-ink sm:text-3xl">
                 Perhaps some stories are not meant to be discovered.
               </h2>
-              <p className="mt-2 font-serif text-2xl leading-snug text-ink sm:text-3xl">
+              <p className="mt-2 font-display font-medium tracking-tight text-2xl leading-snug text-ink sm:text-3xl">
                 Perhaps they are meant to be remembered.
               </p>
-              <p className="mt-10 font-serif text-3xl italic leading-tight text-ink sm:text-4xl">
+              <p className="mt-10 font-display font-medium tracking-tight text-3xl italic leading-tight text-ink sm:text-4xl">
                 I Knew You Before We Met
               </p>
               <p className="mt-3 font-serif text-lg italic text-ink-soft">

@@ -32,8 +32,10 @@ export function Testimonial({ t }: { t: TestimonialView }) {
     <figure className={cn(t.featured ? "" : "")}>
       <blockquote
         className={cn(
-          "font-serif leading-relaxed text-ink",
-          t.featured ? "text-2xl sm:text-3xl" : "text-lg",
+          "leading-relaxed text-ink",
+          t.featured
+            ? "font-display font-medium tracking-tight text-2xl sm:text-3xl"
+            : "font-serif text-lg",
         )}
       >
         {t.message}
