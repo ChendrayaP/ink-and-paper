@@ -5,7 +5,7 @@ import { Container } from "@/components/ui/Container";
 import { BookCover } from "@/components/books/BookCover";
 import { getReaderBook, getBookSequence } from "@/lib/data/reader";
 import { getSiteSettings } from "@/lib/data/site";
-import { OG_IMAGE_DEFAULT, OG_IMAGE_DIMENSIONS, absoluteUrl } from "@/lib/seo";
+import { absoluteUrl } from "@/lib/seo";
 import { bookJsonLd, breadcrumbJsonLd } from "@/lib/structured-data";
 import { JsonLd } from "@/components/seo/JsonLd";
 
@@ -22,9 +22,14 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
   if (!book) return { title: { absolute: `Not found — ${settings.siteName}` } };
   const title = `${book.title} — ${settings.authorName}`;
   const description = book.subtitle ?? settings.siteDescription;
-  const ogImage = book.cover_url
-    ? [{ url: absoluteUrl(book.cover_url), alt: book.title }]
-    : [{ url: OG_IMAGE_DEFAULT, ...OG_IMAGE_DIMENSIONS, alt: settings.siteName }];
+  const ogImage = [
+    {
+      url: absoluteUrl(`/api/og-image/${book.slug}`),
+      width: 1200,
+      height: 630,
+      alt: book.title,
+    },
+  ];
   return {
     title: { absolute: title },
     description,
