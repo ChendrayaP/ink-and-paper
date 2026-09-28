@@ -22,15 +22,15 @@ export function ReaderNav({
   return (
     <nav
       aria-label="Reading navigation"
-      className="mt-16 flex items-center justify-between gap-4 border-t border-line pt-8"
+      className="mt-20 flex items-start justify-between gap-8 border-t border-line pt-10"
     >
       <Link
         href={prevHref}
         rel="prev"
-        className="group max-w-[45%] font-sans text-sm text-ink-soft transition-colors hover:text-ink"
+        className="group max-w-[42%] font-sans text-sm text-ink-soft transition-colors hover:text-ink"
       >
-        <span className="block text-xs text-ink-soft">Previous</span>
-        <span className="mt-1 block truncate text-ink">← {prevLabel}</span>
+        <span className="block text-[0.65rem] uppercase tracking-[0.16em] text-ink-soft">Previous</span>
+        <span className="mt-2 block truncate font-serif text-base text-ink">← {prevLabel}</span>
       </Link>
 
       {row.next_path_segment ? (
@@ -39,8 +39,8 @@ export function ReaderNav({
           rel="next"
           className="group max-w-[45%] text-right font-sans text-sm text-ink-soft transition-colors hover:text-ink"
         >
-          <span className="block text-xs text-ink-soft">Next</span>
-          <span className="mt-1 block truncate text-ink">
+          <span className="block text-[0.65rem] uppercase tracking-[0.16em] text-ink-soft">Next</span>
+          <span className="mt-2 block truncate font-serif text-base text-ink">
             {row.next_label} →
           </span>
         </Link>

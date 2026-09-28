@@ -127,22 +127,16 @@ export default async function SectionPage({ params }: Params) {
         ]}
       />
       <article>
-        <header>
-          <Link
-            href={`/books/${book.slug}`}
-            className="font-sans text-sm text-ink-soft underline decoration-ink-soft/30 underline-offset-4 transition-colors hover:text-ink"
-          >
-            {book.title}
-          </Link>
+        <header className={current.kind === "contents" ? "" : "mx-auto max-w-3xl text-center"}>
           <div className="mt-6">
-            <ChapterIndicator row={current} />
-            <h1 className="mt-2 font-serif text-3xl leading-tight text-ink sm:text-4xl">
+            <p className="font-sans text-[0.65rem] uppercase tracking-[0.2em] text-ink-soft">Chapter {current.chapter_number}</p>
+            <h1 className="mt-6 font-display text-5xl leading-[0.98] text-ink sm:text-[4rem] sm:leading-[0.98]">
               {sectionData?.title ?? current.label}
             </h1>
           </div>
         </header>
 
-        <div className="mt-10">
+        <div className="mt-16">
           {isContents ? (
             <ContentsView slug={book.slug} sequence={sequence} />
           ) : sectionData?.content ? (

@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
 
 /*
@@ -13,7 +12,6 @@ import { createClient } from "@/lib/supabase/client";
   unless a recovery hash is present.
 */
 export function RecoveryGate() {
-  const router = useRouter();
   const [recovering, setRecovering] = useState(false);
 
   useEffect(() => {
@@ -38,7 +36,7 @@ export function RecoveryGate() {
       } catch {
         /* ignore */
       }
-      router.replace("/auth/update-password");
+      window.location.replace("/auth/update-password");
     };
 
     const { data: sub } = supabase.auth.onAuthStateChange((event, session) => {
@@ -58,7 +56,7 @@ export function RecoveryGate() {
     return () => {
   sub.subscription.unsubscribe();
 };
-  }, [router]);
+  }, []);
 
   if (!recovering) return null;
 

@@ -14,12 +14,12 @@ export function ManuscriptContent({ content }: { content: string }) {
   // punctuation, and line breaks are rendered exactly as stored.
   const isDivider = (line: string) => /^-{3,}$/.test(line.trim());
   return (
-    <div className="space-y-6 font-serif text-[1.15rem] leading-[1.85] text-ink">
+    <div className="space-y-9 font-serif text-[1.18rem] leading-[1.95] text-ink sm:text-[1.22rem] sm:leading-[2]">
       {paragraphs.map((block, i) => {
         const lines = block.split("\n").filter((line) => !isDivider(line));
         if (lines.length === 0) return null;
         return (
-          <p key={i}>
+          <p key={i} className={i === 0 ? "pt-1 first-letter:text-[1.35em]" : ""}>
             {lines.map((line, j, arr) => (
               <Fragment key={j}>
                 {line}

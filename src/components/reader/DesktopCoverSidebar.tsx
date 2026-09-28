@@ -18,13 +18,13 @@ export function DesktopCoverSidebar({
 }) {
   return (
     <aside className="hidden lg:block">
-      <div className="sticky top-10">
+      <div className="sticky top-16">
         <Link
           href={`/books/${slug}`}
           className="group block"
           aria-label={`Back to the beginning of ${title}`}
         >
-          <div className="flex h-52 items-start justify-start">
+          <div className="flex h-52 items-start justify-start opacity-90">
             <BookCover src={coverUrl} alt={title} className="h-full" />
           </div>
           <span className="mt-3 block font-sans text-xs text-ink-soft transition-colors group-hover:text-ink">
