@@ -10,19 +10,19 @@ export async function SiteHeader() {
 
   return (
     <header className="border-b border-line">
-      <Container className="flex items-center justify-between gap-4 py-5">
+      <Container className="flex items-center justify-between gap-6 py-7 sm:py-8">
         <Wordmark siteName={siteName} authorName={authorName} />
 
         {/* Desktop navigation */}
         <nav
           aria-label="Primary"
-          className="hidden items-center gap-8 md:flex"
+          className="hidden items-center gap-9 md:flex"
         >
           {PUBLIC_NAV.map((item) => (
             <Link
               key={item.href}
               href={item.href}
-              className="font-sans text-sm text-ink-soft transition-colors hover:text-ink"
+              className="font-sans text-[0.78rem] uppercase tracking-[0.12em] text-ink-soft transition-colors hover:text-ink"
             >
               {item.label}
             </Link>
@@ -32,14 +32,14 @@ export async function SiteHeader() {
               href={instagramUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="font-sans text-sm text-ink-soft transition-colors hover:text-ink"
+              className="font-sans text-[0.78rem] uppercase tracking-[0.12em] text-ink-soft transition-colors hover:text-ink"
             >
               Instagram
             </a>
           ) : null}
           <Link
             href={START_READING_HREF}
-            className="inline-flex items-center justify-center rounded-[2px] bg-ink px-5 py-2.5 font-sans text-sm font-medium text-paper transition-colors hover:opacity-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+            className="ml-2 inline-flex items-center justify-center rounded-[2px] bg-ink px-5 py-2.5 font-sans text-sm font-semibold text-paper transition-colors hover:opacity-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
           >
             Start Reading
           </Link>

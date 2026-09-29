@@ -13,10 +13,10 @@ export function Wordmark({
 }) {
   return (
     <Link href={href} className="group inline-block leading-none">
-      <span className="block font-sans text-lg font-semibold tracking-[0.08em] text-ink">
+      <span className="block font-sans text-[1,05rem] font-medium uppercase tracking-[0.22em] text-ink">
         {siteName}
       </span>
-      <span className="mt-1.5 block font-sans text-[0.7rem] tracking-[0.22em] text-ink-soft">
+      <span className="mt-2 block font-sans text-[0.625rem] uppercase tracking-[0.2em] text-ink-soft">
         {authorName}
       </span>
     </Link>
