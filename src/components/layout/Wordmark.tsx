@@ -16,9 +16,9 @@ export function Wordmark({
       <span className="block font-sans text-[1,05rem] font-medium uppercase tracking-[0.22em] text-ink">
         {siteName}
       </span>
-      <span className="mt-2 block font-sans text-[0.625rem] uppercase tracking-[0.2em] text-ink-soft">
-        {authorName}
-      </span>
+      <span className="mt-1.5 block whitespace-nowrap font-sans text-[0.78rem] font-medium tracking-[0.12em] text-ink-soft">
+  {authorName}
+</span>
     </Link>
   );
 }

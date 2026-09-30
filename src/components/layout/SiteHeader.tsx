@@ -18,15 +18,27 @@ export async function SiteHeader() {
           aria-label="Primary"
           className="hidden items-center gap-9 md:flex"
         >
-          {PUBLIC_NAV.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className="font-sans text-[0.78rem] uppercase tracking-[0.12em] text-ink-soft transition-colors hover:text-ink"
-            >
-              {item.label}
-            </Link>
-          ))}
+          {PUBLIC_NAV.map((item) =>
+  item.external ? (
+    <a
+      key={item.href}
+      href={item.href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="whitespace-nowrap font-sans text-[0.8rem] uppercase tracking-[0.1em] text-ink-soft transition-colors hover:text-ink"
+    >
+      {item.label}
+    </a>
+  ) : (
+    <Link
+      key={item.href}
+      href={item.href}
+      className="whitespace-nowrap font-sans text-[0.8rem] uppercase tracking-[0.1em] text-ink-soft transition-colors hover:text-ink"
+    >
+      {item.label}
+    </Link>
+  )
+)}
           {instagramUrl ? (
             <a
               href={instagramUrl}
@@ -39,7 +51,7 @@ export async function SiteHeader() {
           ) : null}
           <Link
             href={START_READING_HREF}
-            className="ml-2 inline-flex items-center justify-center rounded-[2px] bg-ink px-5 py-2.5 font-sans text-sm font-semibold text-paper transition-colors hover:opacity-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+            className="inline-flex min-w-[118px] items-center justify-center whitespace-nowrap rounded-[2px] bg-ink px-5 py-3 font-sans text-sm font-medium text-paper transition-colors hover:opacity-90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
           >
             Start Reading
           </Link>
