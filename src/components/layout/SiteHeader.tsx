@@ -11,7 +11,9 @@ export async function SiteHeader() {
   return (
     <header className="border-b border-line">
       <Container className="flex items-center justify-between gap-6 py-7 sm:py-8">
-        <Wordmark siteName={siteName} authorName={authorName} />
+        <div className="-ml-3 sm:-ml-5 lg:-ml-12 shrink-0">
+          <Wordmark siteName={siteName} authorName={authorName} />
+        </div>
 
         {/* Desktop navigation */}
         <nav

@@ -10,12 +10,13 @@
   Used sparingly: links, focus, and the occasional rule.
 */
 @theme {
-  --color-paper: #f5f0e6;        /* warm cream — page background            */
-  --color-paper-raised: #fbf8f1; /* off-white — raised surfaces             */
-  --color-ink: #29251f;          /* charcoal — primary text (not pure black)*/
-  --color-ink-soft: #6c6457;     /* muted neutral — secondary text          */
-  --color-line: #e5dccb;         /* subtle divider / hairline               */
-  --color-accent: #7a4034;       /* deep sepia-oxblood — restrained accent  */
+  --color-paper: #f5efe3;        /* warm ivory — page background             */
+  --color-paper-raised: #fbf8f1; /* soft champagne — raised surfaces        */
+  --color-paper-dark: #e8ddcc;   /* deeper champagne — quiet section tone    */
+  --color-ink: #2c211a;          /* deep espresso — primary text             */
+  --color-ink-soft: #6b5a4a;     /* warm brown — secondary text              */
+  --color-line: #e3d6c4;         /* warm hairline / divider                   */
+  --color-accent: #9a6845;       /* antique copper — restrained accent       */
 
   --font-display: var(--font-cormorant), Georgia, "Times New Roman", serif;
   --font-serif: var(--font-newsreader), Georgia, "Times New Roman", serif;
