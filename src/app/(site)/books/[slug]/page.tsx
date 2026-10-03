@@ -92,7 +92,7 @@ export default async function BookRootPage({ params }: Params) {
           ]),
         ]}
       />
-      <div className="mx-auto flex max-w-3xl flex-col items-center text-center">
+      <div className="mx-auto w-full min-w-0 max-w-3xl flex flex-col items-center text-center">
         <div className="flex h-[26rem] items-center justify-center">
           <BookCover src={book.cover_url} alt={book.title} className="h-full" />
         </div>
@@ -277,3 +277,4 @@ export default async function BookRootPage({ params }: Params) {
     </>
   );
 }
+
