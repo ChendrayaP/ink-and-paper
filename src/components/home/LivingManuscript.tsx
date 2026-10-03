@@ -1,4 +1,4 @@
-﻿import Link from "next/link";
+import Link from "next/link";
 import type { Book } from "@/lib/types";
 
 type LivingTestimonial = {
@@ -102,7 +102,7 @@ export function LivingManuscript({ books, readerThoughts, settings }: Props) {
   <div className="relative mx-auto max-w-[1440px] px-6 sm:px-10 lg:px-16">
     <div className="grid min-h-[calc(100svh-145px)] items-center gap-12 lg:grid-cols-[0.6fr_1.65fr_0.75fr] lg:gap-8">
 
-      {/* LEFT â€” editorial information */}
+      {/* LEFT — editorial information */}
       <div className="hidden self-center lg:block">
         <div className="flex items-center gap-3">
           <span className="h-px w-10 bg-accent" />
@@ -121,7 +121,7 @@ export function LivingManuscript({ books, readerThoughts, settings }: Props) {
         </div>
       </div>
 
-      {/* CENTRE â€” the statement */}
+      {/* CENTRE — the statement */}
       <div className="relative">
         <p className="font-sans text-[0.62rem] uppercase tracking-[0.34em] text-accent">
           {siteName}
@@ -155,12 +155,7 @@ export function LivingManuscript({ books, readerThoughts, settings }: Props) {
               className="group inline-flex items-center gap-5 bg-ink px-7 py-4 font-sans text-[0.62rem] font-medium uppercase tracking-[0.2em] text-paper transition-all duration-300 hover:-translate-y-0.5 hover:bg-ink-soft"
             >
               Enter the stories
-              <span
-                aria-hidden="true"
-                className="transition-transform duration-300 group-hover:translate-x-1"
-              >
-                →
-              </span>
+              
             </Link>
 
             <span className="hidden font-sans text-[0.55rem] uppercase tracking-[0.2em] text-ink-soft/65 sm:inline">
@@ -172,12 +167,12 @@ export function LivingManuscript({ books, readerThoughts, settings }: Props) {
         <div className="mt-14 flex items-center gap-4 font-sans text-[0.55rem] uppercase tracking-[0.22em] text-ink-soft/60">
           <span className="h-px w-12 bg-ink/20" />
           <span>A literary house</span>
-          <span>â€¢</span>
+          <span>•</span>
           <span>Books &amp; words</span>
         </div>
       </div>
 
-      {/* RIGHT â€” the manuscript object */}
+      {/* RIGHT — the manuscript object */}
       <div
         aria-hidden="true"
         className="relative hidden h-[390px] lg:block"
@@ -188,36 +183,15 @@ export function LivingManuscript({ books, readerThoughts, settings }: Props) {
         {/* middle page */}
         <div className="absolute right-7 top-5 h-[310px] w-[205px] rotate-[2deg] border border-ink/15 bg-paper" />
 
-        {/* front manuscript page */}
-        <div className="absolute right-12 top-0 h-[320px] w-[205px] -rotate-[2deg] border border-ink/15 bg-paper px-6 py-7 shadow-[0_24px_60px_rgba(0,0,0,0.07)]">
-          <div className="flex items-center justify-between font-sans text-[0.42rem] uppercase tracking-[0.2em] text-ink-soft/55">
-            <span>INK &amp; PAPER</span>
-            <span>01</span>
-          </div>
-
-          <div className="mt-8 h-px bg-ink/10" />
-
-          <div className="mt-8 space-y-3">
-            <span className="block h-px w-12 bg-accent/60" />
-            <span className="block h-px w-full bg-ink/10" />
-            <span className="block h-px w-[88%] bg-ink/10" />
-            <span className="block h-px w-[94%] bg-ink/10" />
-            <span className="block h-px w-[72%] bg-ink/10" />
-          </div>
-
-          <p className="mt-12 font-display text-[1.45rem] leading-[0.95] tracking-[-0.03em] text-ink-soft">
-            Some stories
-            <br />
-            refuse to
-            <br />
-            disappear.
-          </p>
-
-          <div className="absolute bottom-7 left-6 right-6 flex items-center justify-between font-sans text-[0.4rem] uppercase tracking-[0.18em] text-ink-soft/50">
-            <span>P. Chendraya Perumal</span>
-            <span>01</span>
-          </div>
-        </div>
+        {/* front book cover */}
+<div className="absolute right-8 top-0 h-[370px] w-[237px] overflow-hidden border border-ink/15 bg-paper shadow-[0_24px_60px_rgba(0,0,0,0.07)]">
+  <img
+  src={featuredCover}
+  alt={featuredTitle}
+  className="block h-full w-full"
+  decoding="sync"
+/>
+</div>
 
         {/* small red manuscript mark */}
         <span className="absolute bottom-8 right-4 h-12 w-px bg-accent" />
@@ -245,7 +219,7 @@ export function LivingManuscript({ books, readerThoughts, settings }: Props) {
               <p className="font-sans text-[0.62rem] uppercase tracking-[0.28em] text-accent">03 / The stories</p>
               <h2 className="mt-4 font-display text-[clamp(3.4rem,6.5vw,7rem)] font-medium leading-[0.88] tracking-[-0.05em]">Enter a story.</h2>
             </div>
-            <Link href="/library" className="hidden pb-2 font-sans text-[0.62rem] uppercase tracking-[0.2em] text-ink-soft underline decoration-ink-soft/40 underline-offset-8 hover:text-ink sm:block">View the library â†—</Link>
+            <Link href="/library" className="hidden pb-2 font-sans text-[0.62rem] uppercase tracking-[0.2em] text-ink-soft underline decoration-ink-soft/40 underline-offset-8 hover:text-ink sm:block">View the library ↗</Link>
           </div>
 
           {featuredBook ? (
@@ -256,8 +230,12 @@ export function LivingManuscript({ books, readerThoughts, settings }: Props) {
                 <div className="relative aspect-[2/3] overflow-hidden bg-ink/5 shadow-[0_35px_90px_rgba(0,0,0,0.14)]">
                   {featuredCover ? (
                     // eslint-disable-next-line @next/next/no-img-element
-                    <img src={featuredCover} alt={featuredTitle} className="h-full w-full object-cover transition-transform duration-1000 group-hover:scale-[1.025]" />
-                  ) : (
+                    <img
+  src={featuredCover}
+  alt={featuredTitle}
+  className="block h-auto w-full transition-transform duration-1000 group-hover:scale-[1.025]"
+/>
+) : (
                     <div className="flex h-full items-center justify-center bg-ink px-10 text-center text-paper"><span className="font-display text-4xl">{featuredTitle}</span></div>
                   )}
                   <span className="absolute left-5 top-5 bg-paper/90 px-3 py-2 font-sans text-[0.55rem] uppercase tracking-[0.2em]">01 / First edition</span>
@@ -268,7 +246,7 @@ export function LivingManuscript({ books, readerThoughts, settings }: Props) {
                 <p className="font-sans text-[0.62rem] uppercase tracking-[0.25em] text-accent">A story by {authorName}</p>
                 <h3 className="mt-5 font-display text-[clamp(3.2rem,6vw,6.5rem)] font-medium leading-[0.9] tracking-[-0.05em]">{featuredTitle}</h3>
                 {featuredSubtitle ? <p className="mt-7 max-w-2xl font-serif text-xl leading-[1.7] text-ink-soft sm:text-2xl">{featuredSubtitle}</p> : null}
-                {featuredSlug ? <Link href={`/books/${featuredSlug}`} className="mt-10 inline-flex items-center gap-4 border-b border-ink/30 pb-3 font-sans text-[0.62rem] uppercase tracking-[0.2em] transition-colors hover:border-ink">Open this story <span aria-hidden="true">â†—</span></Link> : null}
+                {featuredSlug ? <Link href={`/books/${featuredSlug}`} className="mt-10 inline-flex items-center gap-4 border-b border-ink/30 pb-3 font-sans text-[0.62rem] uppercase tracking-[0.2em] transition-colors hover:border-ink">Open this story <span aria-hidden="true" className="inline-block h-1.5 w-1.5 rotate-45 border-r border-t border-current transition-transform duration-300 group-hover:translate-x-1" /></Link> : null}
 
                 <div className="mt-14 grid grid-cols-2 gap-5 border-t border-ink/10 pt-6 text-[0.56rem] uppercase tracking-[0.18em] text-ink-soft/65 sm:grid-cols-3">
                   <div><span className="block text-accent">01</span><span className="mt-2 block">The beginning</span></div>
@@ -289,7 +267,7 @@ export function LivingManuscript({ books, readerThoughts, settings }: Props) {
                 return (
                   <article key={slug || `${title}-${index + 1}`} className="group grid gap-7 sm:grid-cols-[170px_1fr] sm:items-center">
                     <div className="relative mx-auto w-full max-w-[170px] sm:mx-0">
-                      <div className="relative aspect-[2/3] overflow-hidden bg-ink/5 shadow-[0_20px_45px_rgba(0,0,0,0.1)]">
+                      <div className="relative mx-auto w-full max-w-[420px] aspect-[2/3] overflow-hidden ...">
                         {cover ? (
                           // eslint-disable-next-line @next/next/no-img-element
                           <img src={cover} alt={title} className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]" />
@@ -300,7 +278,7 @@ export function LivingManuscript({ books, readerThoughts, settings }: Props) {
                       <p className="font-sans text-[0.56rem] uppercase tracking-[0.22em] text-accent">0{index + 2} / Another story</p>
                       <h3 className="mt-3 font-display text-3xl font-medium leading-[0.95] tracking-[-0.025em] sm:text-4xl">{title}</h3>
                       {subtitle ? <p className="mt-4 font-serif leading-relaxed text-ink-soft">{subtitle}</p> : null}
-                      {slug ? <Link href={`/books/${slug}`} className="mt-6 inline-flex border-b border-ink/25 pb-2 font-sans text-[0.58rem] uppercase tracking-[0.18em] hover:border-ink">Open â†—</Link> : null}
+                      {slug ? <Link href={`/books/${slug}`} className="mt-6 inline-flex border-b border-ink/25 pb-2 font-sans text-[0.58rem] uppercase tracking-[0.18em] hover:border-ink">Open ↗</Link> : null}
                     </div>
                   </article>
                 );
@@ -308,7 +286,7 @@ export function LivingManuscript({ books, readerThoughts, settings }: Props) {
             </div>
           ) : null}
 
-          <div className="mt-12 sm:hidden"><Link href="/library" className="font-sans text-[0.62rem] uppercase tracking-[0.18em] text-ink-soft underline underline-offset-8">View the complete library â†—</Link></div>
+          <div className="mt-12 sm:hidden"><Link href="/library" className="font-sans text-[0.62rem] uppercase tracking-[0.18em] text-ink-soft underline underline-offset-8">View the complete library ↗</Link></div>
         </div>
       </section>
 
@@ -466,11 +444,11 @@ export function LivingManuscript({ books, readerThoughts, settings }: Props) {
                 <div className="mt-12 flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
                   <div>
                     <p className="font-display text-2xl italic text-ink-soft">
-                      â€” {authorName}
+                      — {authorName}
                     </p>
 
                     <p className="mt-2 font-sans text-[0.52rem] uppercase tracking-[0.2em] text-ink-soft/60">
-                      Author Â· Storyteller
+                      Author · Storyteller
                     </p>
                   </div>
 
@@ -479,7 +457,7 @@ export function LivingManuscript({ books, readerThoughts, settings }: Props) {
                     className="inline-flex w-fit items-center gap-4 border-b border-ink/25 pb-2 font-sans text-[0.6rem] uppercase tracking-[0.2em] text-ink-soft transition-colors hover:border-ink hover:text-ink"
                   >
                     Read the full letter
-                    <span aria-hidden="true">â†—</span>
+                    <span aria-hidden="true" className="inline-block h-1.5 w-1.5 rotate-45 border-r border-t border-current transition-transform duration-300 group-hover:translate-x-1" />
                   </Link>
                 </div>
               </div>
@@ -518,8 +496,8 @@ export function LivingManuscript({ books, readerThoughts, settings }: Props) {
                     <blockquote key={thought.id ?? index} className="relative grid gap-5 border-b border-ink/15 py-9 sm:grid-cols-[70px_1fr] sm:gap-8 sm:py-12">
                       <span className="font-sans text-[0.55rem] uppercase tracking-[0.18em] text-accent">0{index + 1}</span>
                       <div>
-                        <p className="font-display text-[clamp(1.9rem,3.6vw,3.8rem)] font-medium leading-[1] tracking-[-0.03em]">â€œ{thought.message}â€</p>
-                        <footer className="mt-5 font-sans text-[0.58rem] uppercase tracking-[0.18em] text-ink-soft">â€” {getReaderName(thought)}</footer>
+                        <p className="font-display text-[clamp(1.9rem,3.6vw,3.8rem)] font-medium leading-[1] tracking-[-0.03em]">“{thought.message}”</p>
+                        <footer className="mt-5 font-sans text-[0.58rem] uppercase tracking-[0.18em] text-ink-soft">— {getReaderName(thought)}</footer>
                       </div>
                     </blockquote>
                   ))}
@@ -527,7 +505,7 @@ export function LivingManuscript({ books, readerThoughts, settings }: Props) {
               ) : (
                 <div className="mt-14 border-t border-ink/15 py-10"><p className="font-serif text-xl text-ink-soft">The margins are waiting for your words.</p></div>
               )}
-              <Link href="/testimonials" className="mt-8 inline-flex items-center gap-4 font-sans text-[0.6rem] uppercase tracking-[0.2em] text-ink-soft underline underline-offset-8">Read the reader notes <span aria-hidden="true">â†—</span></Link>
+              <Link href="/testimonials" className="mt-8 inline-flex items-center gap-4 font-sans text-[0.6rem] uppercase tracking-[0.2em] text-ink-soft underline underline-offset-8">Read the reader notes <span aria-hidden="true" className="inline-block h-1.5 w-1.5 rotate-45 border-r border-t border-current transition-transform duration-300 group-hover:translate-x-1" /></Link>
             </div>
           </div>
         </div>
@@ -552,19 +530,19 @@ export function LivingManuscript({ books, readerThoughts, settings }: Props) {
               <span className="font-sans text-[0.55rem] tracking-[0.2em] text-accent">01</span>
               <h3 className="mt-20 font-display text-4xl font-medium">The Books</h3>
               <p className="mt-4 max-w-xs font-serif leading-relaxed text-ink-soft group-hover:text-paper/65">Enter the complete library.</p>
-              <span className="mt-8 block font-sans text-[0.58rem] uppercase tracking-[0.18em]">Explore â†—</span>
+              <span className="mt-8 block font-sans text-[0.58rem] uppercase tracking-[0.18em]">Explore ↗</span>
             </Link>
             <Link href="/about" className="group min-h-[270px] bg-paper p-8 transition-colors duration-500 hover:bg-ink hover:text-paper sm:p-10">
               <span className="font-sans text-[0.55rem] tracking-[0.2em] text-accent">02</span>
               <h3 className="mt-20 font-display text-4xl font-medium">The Author</h3>
               <p className="mt-4 max-w-xs font-serif leading-relaxed text-ink-soft group-hover:text-paper/65">Meet the person behind the pages.</p>
-              <span className="mt-8 block font-sans text-[0.58rem] uppercase tracking-[0.18em]">Read the letter â†—</span>
+              <span className="mt-8 block font-sans text-[0.58rem] uppercase tracking-[0.18em]">Read the letter ↗</span>
             </Link>
             <a href="https://www.instagram.com/author.pchendraya/" target="_blank" rel="noopener noreferrer" className="group min-h-[270px] bg-paper p-8 transition-colors duration-500 hover:bg-ink hover:text-paper sm:p-10">
               <span className="font-sans text-[0.55rem] tracking-[0.2em] text-accent">03</span>
               <h3 className="mt-20 font-display text-4xl font-medium">Instagram</h3>
               <p className="mt-4 max-w-xs font-serif leading-relaxed text-ink-soft group-hover:text-paper/65">A glimpse beyond the page.</p>
-              <span className="mt-8 block font-sans text-[0.58rem] uppercase tracking-[0.18em]">Visit the desk â†—</span>
+              <span className="mt-8 block font-sans text-[0.58rem] uppercase tracking-[0.18em]">Visit the desk ↗</span>
             </a>
           </div>
         </div>
@@ -581,7 +559,7 @@ export function LivingManuscript({ books, readerThoughts, settings }: Props) {
               <p className="font-sans text-[0.62rem] uppercase tracking-[0.28em] text-accent">08 / The last page</p>
               <h2 className="mt-7 font-display text-[clamp(4rem,8.5vw,9rem)] font-medium leading-[0.82] tracking-[-0.06em]">There are<br />more stories<br /><span className="text-ink-soft">to tell.</span></h2>
               <div className="mt-12 flex flex-wrap items-center gap-7">
-                <Link href="/library" className="inline-flex items-center gap-5 bg-ink px-7 py-4 font-sans text-[0.62rem] font-medium uppercase tracking-[0.2em] text-paper transition-transform duration-300 hover:-translate-y-1">Enter the library <span aria-hidden="true">â†—</span></Link>
+                <Link href="/library" className="inline-flex items-center gap-5 bg-ink px-7 py-4 font-sans text-[0.62rem] font-medium uppercase tracking-[0.2em] text-paper transition-transform duration-300 hover:-translate-y-1">Enter the library <span aria-hidden="true" className="inline-block h-1.5 w-1.5 rotate-45 border-r border-t border-current transition-transform duration-300 group-hover:translate-x-1" /></Link>
                 <span className="font-display text-xl italic text-ink-soft">Take your time.</span>
               </div>
             </div>
@@ -606,5 +584,7 @@ export function LivingManuscript({ books, readerThoughts, settings }: Props) {
     </div>
   );
 }
+
+
 
 
