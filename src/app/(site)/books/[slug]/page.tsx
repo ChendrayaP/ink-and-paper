@@ -97,11 +97,11 @@ export default async function BookRootPage({ params }: Params) {
           <BookCover src={book.cover_url} alt={book.title} className="h-full" />
         </div>
 
-        <h1 className="mt-12 font-serif text-4xl leading-tight text-ink sm:text-5xl">
+        <h1 className="mt-12 w-full font-serif text-4xl leading-tight text-ink sm:text-5xl">
           {book.title}
         </h1>
         {book.subtitle ? (
-          <p className="mt-3 font-serif text-xl italic text-ink-soft">
+          <p className="mt-3 w-full font-serif text-xl italic text-ink-soft">
             {book.subtitle}
           </p>
         ) : null}
