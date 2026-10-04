@@ -242,7 +242,7 @@ export function LivingManuscript({ books, readerThoughts, settings }: Props) {
                 </div>
               </div>
 
-              <div className="relative max-w-3xl lg:pb-4">
+              <div className="relative min-w-0 max-w-3xl lg:pb-4">
                 <p className="font-sans text-[0.62rem] uppercase tracking-[0.25em] text-accent">A story by {authorName}</p>
                 <h3 className="mt-5 font-display text-[clamp(3.2rem,6vw,6.5rem)] font-medium leading-[0.9] tracking-[-0.05em]">{featuredTitle}</h3>
                 {featuredSubtitle ? <p className="mt-7 max-w-2xl font-serif text-xl leading-[1.7] text-ink-soft sm:text-2xl">{featuredSubtitle}</p> : null}
@@ -303,9 +303,9 @@ export function LivingManuscript({ books, readerThoughts, settings }: Props) {
 
           <div className="mt-16 sm:mt-24">
             {unsaidLines.map((line, index) => (
-              <div key={line} className="group grid grid-cols-[30px_1fr] items-baseline border-b border-paper/10 py-5 sm:grid-cols-[55px_1fr] sm:py-8">
+              <div key={line} className="group grid grid-cols-[30px_minmax(0,1fr)] items-baseline border-b border-paper/10 py-5 sm:grid-cols-[55px_minmax(0,1fr)] sm:py-8">
                 <span className="font-sans text-[0.55rem] tracking-[0.18em] text-accent">0{index + 1}</span>
-                <p className="font-display text-[clamp(2.4rem,6.8vw,7.5rem)] font-medium leading-[0.86] tracking-[-0.045em] text-paper/90 transition-transform duration-500 group-hover:translate-x-3">{line}</p>
+                <p className="min-w-0 max-w-full font-display text-[clamp(2rem,6vw,7.5rem)] font-medium leading-[0.86] tracking-[-0.045em] text-paper/90 transition-transform duration-500 group-hover:translate-x-3">{line}</p>
               </div>
             ))}
           </div>
@@ -493,7 +493,7 @@ export function LivingManuscript({ books, readerThoughts, settings }: Props) {
               {readerThoughts.length > 0 ? (
                 <div className="mt-14 grid gap-0 border-t border-ink/15">
                   {readerThoughts.slice(0, 3).map((thought, index) => (
-                    <blockquote key={thought.id ?? index} className="relative grid gap-5 border-b border-ink/15 py-9 sm:grid-cols-[70px_1fr] sm:gap-8 sm:py-12">
+                    <blockquote key={thought.id ?? index} className="relative grid gap-5 border-b border-ink/15 py-9 sm:grid-cols-[70px_minmax(0,1fr)] sm:gap-8 sm:py-12">
                       <span className="font-sans text-[0.55rem] uppercase tracking-[0.18em] text-accent">0{index + 1}</span>
                       <div>
                         <p className="font-display text-[clamp(1.9rem,3.6vw,3.8rem)] font-medium leading-[1] tracking-[-0.03em]">“{thought.message}”</p>
