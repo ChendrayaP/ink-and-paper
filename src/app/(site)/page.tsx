@@ -11,7 +11,7 @@ export const revalidate = 300;
 
 export async function generateMetadata(): Promise<Metadata> {
   return pageMetadata({
-    absoluteTitle: (s) => `${s.siteName} â€” ${s.authorName}`,
+    absoluteTitle: (s) => `${s.siteName} - ${s.authorName}`,
     path: "/",
   });
 }
