@@ -8,14 +8,14 @@ import "./globals.css";
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: `${siteConfig.brand} — ${siteConfig.author}`,
+    default: `${siteConfig.brand} - ${siteConfig.author}`,
     template: `%s — ${siteConfig.brand}`,
   },
   description: siteConfig.description,
   openGraph: {
     type: "website",
     siteName: siteConfig.brand,
-    title: `${siteConfig.brand} — ${siteConfig.author}`,
+    title: `${siteConfig.brand} - ${siteConfig.author}`,
     description: siteConfig.description,
     url: siteConfig.url,
     images: [
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: `${siteConfig.brand} — ${siteConfig.author}`,
+    title: `${siteConfig.brand} - ${siteConfig.author}`,
     description: siteConfig.description,
     images: [OG_IMAGE_DEFAULT],
   },
