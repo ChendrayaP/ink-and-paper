@@ -86,10 +86,6 @@ export function LivingManuscript({ books, readerThoughts, settings }: Props) {
 ============================================================ */}
 <section className="relative min-h-[calc(100svh-97px)] overflow-hidden border-b border-ink/10 bg-paper py-16 sm:py-20 lg:py-24">
   {/* signature vertical ink line */}
-  <div
-    aria-hidden="true"
-    className="absolute inset-y-0 left-[7.5%] w-px bg-accent/30"
-  />
 
   {/* oversized folio number */}
   <div
@@ -104,12 +100,6 @@ export function LivingManuscript({ books, readerThoughts, settings }: Props) {
 
       {/* LEFT — editorial information */}
       <div className="hidden self-center lg:block">
-        <div className="flex items-center gap-3">
-          <span className="h-px w-10 bg-accent" />
-          <p className="font-sans text-[0.62rem] uppercase tracking-[0.25em] text-accent">
-            01 / The opening page
-          </p>
-        </div>
 
         <p className="mt-8 max-w-[190px] font-serif text-base leading-[1.75] text-ink-soft">
           Stories written for the moments that remain long after the page has been turned.
@@ -216,7 +206,6 @@ export function LivingManuscript({ books, readerThoughts, settings }: Props) {
         <div className="mx-auto max-w-[1440px] px-6 sm:px-10 lg:px-20">
           <div className="flex items-end justify-between gap-8 border-b border-ink/15 pb-8">
             <div>
-              <p className="font-sans text-[0.62rem] uppercase tracking-[0.28em] text-accent">03 / The stories</p>
               <h2 className="mt-4 font-display text-[clamp(3.4rem,6.5vw,7rem)] font-medium leading-[0.88] tracking-[-0.05em]">Enter a story.</h2>
             </div>
             <Link href="/library" className="hidden pb-2 font-sans text-[0.62rem] uppercase tracking-[0.2em] text-ink-soft underline decoration-ink-soft/40 underline-offset-8 hover:text-ink sm:block">View the library ↗</Link>
@@ -297,14 +286,14 @@ export function LivingManuscript({ books, readerThoughts, settings }: Props) {
         <div aria-hidden="true" className="absolute inset-y-0 left-[7.5%] w-px bg-accent/70" />
         <div className="mx-auto max-w-[1440px] px-6 sm:px-10 lg:px-20">
           <div className="flex items-start justify-between gap-10">
-            <p className="font-sans text-[0.62rem] uppercase tracking-[0.28em] text-paper/45">04 / The unsaid</p>
+            <div aria-hidden="true" />
             <p className="hidden max-w-[220px] font-serif text-sm leading-[1.65] text-paper/45 sm:block">Perhaps every reader arrives carrying a sentence of their own.</p>
           </div>
 
           <div className="mt-16 sm:mt-24">
             {unsaidLines.map((line, index) => (
               <div key={line} className="group grid grid-cols-[30px_minmax(0,1fr)] items-baseline border-b border-paper/10 py-5 sm:grid-cols-[55px_minmax(0,1fr)] sm:py-8">
-                <span className="font-sans text-[0.55rem] tracking-[0.18em] text-accent">0{index + 1}</span>
+                <span aria-hidden="true" />
                 <p className="min-w-0 max-w-full font-display text-[clamp(2rem,6vw,7.5rem)] font-medium leading-[0.86] tracking-[-0.045em] text-paper/90 transition-transform duration-500 group-hover:translate-x-3">{line}</p>
               </div>
             ))}
@@ -331,9 +320,6 @@ export function LivingManuscript({ books, readerThoughts, settings }: Props) {
       
       {/* Section marker */}
       <div className="relative">
-        <p className="font-sans text-[0.62rem] uppercase tracking-[0.28em] text-accent">
-          05 / The Letter
-        </p>
 
         <div className="mt-8 hidden h-px w-16 bg-ink/20 lg:block" />
 
@@ -484,7 +470,6 @@ export function LivingManuscript({ books, readerThoughts, settings }: Props) {
         <div className="mx-auto max-w-[1440px] px-6 sm:px-10 lg:px-20">
           <div className="grid gap-12 lg:grid-cols-[0.55fr_1.45fr] lg:gap-24">
             <div>
-              <p className="font-sans text-[0.62rem] uppercase tracking-[0.28em] text-accent">06 / The margins</p>
               <p className="mt-8 max-w-[210px] font-serif text-base leading-[1.7] text-ink-soft">The most meaningful part of a book is sometimes what the reader writes beside it.</p>
             </div>
 
@@ -519,7 +504,6 @@ export function LivingManuscript({ books, readerThoughts, settings }: Props) {
         <div className="mx-auto max-w-[1440px] px-6 sm:px-10 lg:px-20">
           <div className="grid items-end gap-10 lg:grid-cols-[1.4fr_0.6fr]">
             <div>
-              <p className="font-sans text-[0.62rem] uppercase tracking-[0.28em] text-accent">07 / The author's desk</p>
               <h2 className="mt-5 max-w-5xl font-display text-[clamp(3.4rem,7vw,7.5rem)] font-medium leading-[0.84] tracking-[-0.055em]">The desk is<br /><span className="text-ink-soft">never quiet.</span></h2>
             </div>
             <p className="max-w-sm font-serif text-lg leading-[1.75] text-ink-soft">New stories begin as fragments. A sentence. A memory. A page written too late at night.</p>
@@ -527,19 +511,16 @@ export function LivingManuscript({ books, readerThoughts, settings }: Props) {
 
           <div className="mt-16 grid gap-px border border-ink/10 bg-ink/10 md:grid-cols-3">
             <Link href="/library" className="group min-h-[270px] bg-paper p-8 transition-colors duration-500 hover:bg-ink hover:text-paper sm:p-10">
-              <span className="font-sans text-[0.55rem] tracking-[0.2em] text-accent">01</span>
               <h3 className="mt-20 font-display text-4xl font-medium">The Books</h3>
               <p className="mt-4 max-w-xs font-serif leading-relaxed text-ink-soft group-hover:text-paper/65">Enter the complete library.</p>
               <span className="mt-8 block font-sans text-[0.58rem] uppercase tracking-[0.18em]">Explore ↗</span>
             </Link>
             <Link href="/about" className="group min-h-[270px] bg-paper p-8 transition-colors duration-500 hover:bg-ink hover:text-paper sm:p-10">
-              <span className="font-sans text-[0.55rem] tracking-[0.2em] text-accent">02</span>
               <h3 className="mt-20 font-display text-4xl font-medium">The Author</h3>
               <p className="mt-4 max-w-xs font-serif leading-relaxed text-ink-soft group-hover:text-paper/65">Meet the person behind the pages.</p>
               <span className="mt-8 block font-sans text-[0.58rem] uppercase tracking-[0.18em]">Read the letter ↗</span>
             </Link>
             <a href="https://www.instagram.com/author.pchendraya/" target="_blank" rel="noopener noreferrer" className="group min-h-[270px] bg-paper p-8 transition-colors duration-500 hover:bg-ink hover:text-paper sm:p-10">
-              <span className="font-sans text-[0.55rem] tracking-[0.2em] text-accent">03</span>
               <h3 className="mt-20 font-display text-4xl font-medium">Instagram</h3>
               <p className="mt-4 max-w-xs font-serif leading-relaxed text-ink-soft group-hover:text-paper/65">A glimpse beyond the page.</p>
               <span className="mt-8 block font-sans text-[0.58rem] uppercase tracking-[0.18em]">Visit the desk ↗</span>
@@ -556,7 +537,6 @@ export function LivingManuscript({ books, readerThoughts, settings }: Props) {
         <div className="mx-auto w-full max-w-[1440px] px-6 sm:px-10 lg:px-20">
           <div className="grid items-end gap-16 lg:grid-cols-[1.35fr_0.65fr]">
             <div>
-              <p className="font-sans text-[0.62rem] uppercase tracking-[0.28em] text-accent">08 / The last page</p>
               <h2 className="mt-7 font-display text-[clamp(4rem,8.5vw,9rem)] font-medium leading-[0.82] tracking-[-0.06em]">There are<br />more stories<br /><span className="text-ink-soft">to tell.</span></h2>
               <div className="mt-12 flex flex-wrap items-center gap-7">
                 <Link href="/library" className="inline-flex items-center gap-5 bg-ink px-7 py-4 font-sans text-[0.62rem] font-medium uppercase tracking-[0.2em] text-paper transition-transform duration-300 hover:-translate-y-1">Enter the library <span aria-hidden="true" className="inline-block h-1.5 w-1.5 rotate-45 border-r border-t border-current transition-transform duration-300 group-hover:translate-x-1" /></Link>
