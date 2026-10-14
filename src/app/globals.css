@@ -54,3 +54,22 @@ body {
     transition-duration: 0.001ms !important;
   }
 }
+
+/*
+  Homepage featured book — a slow, gentle vertical float. The reduced-motion
+  rule above neutralises this automatically (it zeroes the duration and
+  iteration count), so no separate opt-out is needed.
+*/
+@keyframes inkFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+.ink-float {
+  animation: inkFloat 6s ease-in-out infinite;
+}

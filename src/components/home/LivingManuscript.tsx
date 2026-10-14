@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { Book } from "@/lib/types";
+import { FloatingBook } from "@/components/home/FloatingBook";
 
 type LivingTestimonial = {
   id?: string;
@@ -78,6 +79,10 @@ export function LivingManuscript({ books, readerThoughts, settings }: Props) {
   const featuredSlug = featuredBook ? getBookSlug(featuredBook) : "";
   const featuredSubtitle = featuredBook ? getBookSubtitle(featuredBook) : "";
   const featuredCover = featuredBook ? getBookCover(featuredBook) : "";
+  const featuredDescription = featuredBook
+    ? ((getBookValue(featuredBook, "description") as string | undefined) ?? "").trim()
+    : "";
+  const featuredBlurb = featuredDescription || featuredSubtitle;
 
   return (
     <div className="overflow-hidden bg-paper text-ink">
@@ -90,7 +95,7 @@ export function LivingManuscript({ books, readerThoughts, settings }: Props) {
   {/* oversized folio number */}
   <div
     aria-hidden="true"
-    className="pointer-events-none absolute right-[6%] top-[10%] select-none font-display text-[clamp(8rem,18vw,18rem)] font-medium leading-none tracking-[-0.08em] text-ink/[0.035]"
+    className="pointer-events-none absolute right-[6%] top-[10%] hidden select-none font-display text-[clamp(8rem,18vw,18rem)] font-medium leading-none tracking-[-0.08em] text-ink/[0.035] lg:block"
   >
     01
   </div>
@@ -162,29 +167,37 @@ export function LivingManuscript({ books, readerThoughts, settings }: Props) {
         </div>
       </div>
 
-      {/* RIGHT — the manuscript object */}
-      <div
-        aria-hidden="true"
-        className="relative hidden h-[390px] lg:block"
-      >
-        {/* back page */}
-        <div className="absolute right-2 top-10 h-[300px] w-[205px] rotate-[5deg] border border-ink/10 bg-paper-dark/30" />
+      {/* RIGHT — the featured book */}
+      <div className="relative flex w-full min-w-0 flex-col items-center lg:items-start lg:self-center">
+        <FloatingBook cover={featuredCover || null} title={featuredTitle} />
 
-        {/* middle page */}
-        <div className="absolute right-7 top-5 h-[310px] w-[205px] rotate-[2deg] border border-ink/15 bg-paper" />
-
-        {/* front book cover */}
-<div className="absolute right-8 top-0 h-[370px] w-[237px] overflow-hidden border border-ink/15 bg-paper shadow-[0_24px_60px_rgba(0,0,0,0.07)]">
-  <img
-  src={featuredCover}
-  alt={featuredTitle}
-  className="block h-full w-full"
-  decoding="sync"
-/>
-</div>
-
-        {/* small red manuscript mark */}
-        <span className="absolute bottom-8 right-4 h-12 w-px bg-accent" />
+        {featuredBook ? (
+          <div className="mt-10 w-full min-w-0 text-center lg:max-w-[300px] lg:text-left">
+            <p className="font-sans text-[0.58rem] uppercase tracking-[0.24em] text-accent">
+              Featured story
+            </p>
+            <h2 className="mt-3 font-display text-2xl leading-[1.05] text-ink sm:text-[1.75rem]">
+              {featuredTitle}
+            </h2>
+            {featuredBlurb ? (
+              <p className="mt-3 font-serif text-base leading-[1.6] text-ink-soft line-clamp-3">
+                {featuredBlurb}
+              </p>
+            ) : null}
+            {featuredSlug ? (
+              <Link
+                href={`/books/${featuredSlug}`}
+                className="group mt-6 inline-flex items-center gap-3 bg-ink px-7 py-4 font-sans text-[0.62rem] font-medium uppercase tracking-[0.2em] text-paper transition-all duration-300 hover:-translate-y-0.5 hover:bg-ink-soft focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+              >
+                Read Online
+                <span
+                  aria-hidden="true"
+                  className="inline-block h-1.5 w-1.5 rotate-45 border-r border-t border-current transition-transform duration-300 group-hover:translate-x-1"
+                />
+              </Link>
+            ) : null}
+          </div>
+        ) : null}
       </div>
     </div>
   </div>
