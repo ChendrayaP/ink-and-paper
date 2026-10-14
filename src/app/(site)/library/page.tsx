@@ -38,6 +38,11 @@ function getBookSubtitle(book: unknown) {
   );
 }
 
+function getBookDescription(book: unknown) {
+  const value = getBookValue(book, "description") as string | undefined;
+  return (value ?? "").trim();
+}
+
 function getBookCover(book: unknown) {
   return (
     (getBookValue(book, "cover_url") as string | undefined) ??
@@ -89,6 +94,8 @@ export default async function LibraryPage() {
   const featuredSlug = getBookSlug(featuredBook);
   const featuredSubtitle = getBookSubtitle(featuredBook);
   const featuredCover = getBookCover(featuredBook);
+  const featuredDescription = getBookDescription(featuredBook);
+  const FEATURED_FALLBACK = "Enter the story and take your time with every page.";
 
   return (
     <main>
@@ -128,8 +135,8 @@ export default async function LibraryPage() {
                 </p>
               ) : null}
 
-              <p className="mt-7 max-w-lg text-base leading-8 text-ink-soft">
-                Enter the story and take your time with every page.
+              <p className="mt-7 max-w-lg text-base leading-8 text-ink-soft line-clamp-4">
+                {featuredDescription || FEATURED_FALLBACK}
               </p>
 
               {featuredSlug ? (
@@ -190,6 +197,7 @@ export default async function LibraryPage() {
                 const slug = getBookSlug(book);
                 const subtitle = getBookSubtitle(book);
                 const cover = getBookCover(book);
+                const description = getBookDescription(book);
 
                 return (
                   <article key={slug || title} className="group">
@@ -216,6 +224,11 @@ export default async function LibraryPage() {
                         {subtitle ? (
                           <p className="mt-2 font-serif text-sm italic leading-6 text-ink-soft">
                             {subtitle}
+                          </p>
+                        ) : null}
+                        {description ? (
+                          <p className="mt-2 font-serif text-sm leading-6 text-ink-soft line-clamp-2">
+                            {description}
                           </p>
                         ) : null}
                         <span className="mt-4 inline-block font-sans text-[0.66rem] uppercase tracking-[0.16em] text-accent">
