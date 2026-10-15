@@ -89,7 +89,7 @@ export function LivingManuscript({ books, readerThoughts, settings }: Props) {
       {/* ============================================================
 01 / THE OPENING PAGE
 ============================================================ */}
-<section className="relative min-h-[calc(100svh-97px)] overflow-hidden border-b border-ink/10 bg-paper py-16 sm:py-20 lg:py-24">
+<section className="relative overflow-hidden border-b border-ink/10 bg-paper pt-8 pb-16 sm:pt-10 sm:pb-20 lg:pt-12 lg:pb-24">
   {/* signature vertical ink line */}
 
   {/* oversized folio number */}
@@ -101,7 +101,7 @@ export function LivingManuscript({ books, readerThoughts, settings }: Props) {
   </div>
 
   <div className="relative mx-auto max-w-[1440px] px-6 sm:px-10 lg:px-16">
-    <div className="grid min-h-[calc(100svh-145px)] items-center gap-12 lg:grid-cols-[0.6fr_1.65fr_0.75fr] lg:gap-8">
+    <div className="grid items-start gap-12 lg:grid-cols-[0.6fr_1.65fr_0.75fr] lg:gap-8">
 
       {/* LEFT — editorial information */}
       <div className="hidden self-center lg:block">
@@ -159,7 +159,7 @@ export function LivingManuscript({ books, readerThoughts, settings }: Props) {
           </div>
         </div>
 
-        <div className="mt-14 flex items-center gap-4 font-sans text-[0.55rem] uppercase tracking-[0.22em] text-ink-soft/60">
+        <div className="mt-10 flex items-center gap-4 font-sans text-[0.55rem] uppercase tracking-[0.22em] text-ink-soft/60">
           <span className="h-px w-12 bg-ink/20" />
           <span>A literary house</span>
           <span>•</span>
@@ -214,7 +214,7 @@ export function LivingManuscript({ books, readerThoughts, settings }: Props) {
       {/* ============================================================
           03 / THE STORIES
       ============================================================ */}
-      <section className="relative border-b border-ink/10 py-24 sm:py-32 lg:py-36">
+      <section className="relative border-b border-ink/10 py-12 sm:py-16 lg:py-20">
         <div aria-hidden="true" className="absolute inset-y-0 left-[7.5%] w-px bg-accent/25" />
         <div className="mx-auto max-w-[1440px] px-6 sm:px-10 lg:px-20">
           <div className="flex items-end justify-between gap-8 border-b border-ink/15 pb-8">
@@ -225,7 +225,7 @@ export function LivingManuscript({ books, readerThoughts, settings }: Props) {
           </div>
 
           {featuredBook ? (
-            <article className="group relative grid items-center gap-12 py-20 lg:grid-cols-[0.9fr_1.1fr] lg:gap-24 lg:py-28">
+            <article className="group relative grid items-center gap-12 py-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-24 lg:py-16">
               <div className="relative mx-auto w-full max-w-[440px] lg:mx-0">
                 <div aria-hidden="true" className="absolute -inset-7 border border-ink/10 transition-transform duration-700 group-hover:rotate-[1deg] group-hover:scale-[1.015]" />
                 <div aria-hidden="true" className="absolute -bottom-5 -right-5 h-16 w-16 border-b border-r border-accent/60" />
@@ -250,7 +250,7 @@ export function LivingManuscript({ books, readerThoughts, settings }: Props) {
                 {featuredSubtitle ? <p className="mt-7 max-w-2xl font-serif text-xl leading-[1.7] text-ink-soft sm:text-2xl">{featuredSubtitle}</p> : null}
                 {featuredSlug ? <Link href={`/books/${featuredSlug}`} className="mt-10 inline-flex items-center gap-4 border-b border-ink/30 pb-3 font-sans text-[0.62rem] uppercase tracking-[0.2em] transition-colors hover:border-ink">Open this story <span aria-hidden="true" className="inline-block h-1.5 w-1.5 rotate-45 border-r border-t border-current transition-transform duration-300 group-hover:translate-x-1" /></Link> : null}
 
-                <div className="mt-14 grid grid-cols-2 gap-5 border-t border-ink/10 pt-6 text-[0.56rem] uppercase tracking-[0.18em] text-ink-soft/65 sm:grid-cols-3">
+                <div className="mt-10 grid grid-cols-2 gap-5 border-t border-ink/10 pt-6 text-[0.56rem] uppercase tracking-[0.18em] text-ink-soft/65 sm:grid-cols-3">
                   <div><span className="block text-accent">01</span><span className="mt-2 block">The beginning</span></div>
                   <div><span className="block text-accent">02</span><span className="mt-2 block">The feeling</span></div>
                   <div className="hidden sm:block"><span className="block text-accent">03</span><span className="mt-2 block">The memory</span></div>
@@ -295,7 +295,7 @@ export function LivingManuscript({ books, readerThoughts, settings }: Props) {
       {/* ============================================================
           04 / THE UNSAID
       ============================================================ */}
-      <section className="relative overflow-hidden border-b border-ink/10 bg-ink py-24 text-paper sm:py-32 lg:py-40">
+      <section className="relative overflow-hidden border-b border-ink/10 bg-ink py-16 text-paper sm:py-20 lg:py-24">
         <div aria-hidden="true" className="absolute inset-y-0 left-[7.5%] w-px bg-accent/70" />
         <div className="mx-auto max-w-[1440px] px-6 sm:px-10 lg:px-20">
           <div className="flex items-start justify-between gap-10">
@@ -303,7 +303,7 @@ export function LivingManuscript({ books, readerThoughts, settings }: Props) {
             <p className="hidden max-w-[220px] font-serif text-sm leading-[1.65] text-paper/45 sm:block">Perhaps every reader arrives carrying a sentence of their own.</p>
           </div>
 
-          <div className="mt-16 sm:mt-24">
+          <div className="mt-10 sm:mt-14">
             {unsaidLines.map((line, index) => (
               <div key={line} className="group grid grid-cols-[30px_minmax(0,1fr)] items-baseline border-b border-paper/10 py-5 sm:grid-cols-[55px_minmax(0,1fr)] sm:py-8">
                 <span aria-hidden="true" />
@@ -312,7 +312,7 @@ export function LivingManuscript({ books, readerThoughts, settings }: Props) {
             ))}
           </div>
 
-          <div className="mt-14 grid gap-8 sm:mt-20 sm:grid-cols-[1fr_0.75fr] sm:items-end">
+          <div className="mt-10 grid gap-8 sm:mt-14 sm:grid-cols-[1fr_0.75fr] sm:items-end">
             <p className="max-w-3xl font-serif text-xl leading-[1.8] text-paper/65 sm:text-2xl">Every story begins somewhere. Sometimes with a person. Sometimes with a memory. Sometimes with the words we could never say aloud.</p>
             <p className="font-display text-2xl italic leading-tight text-paper/75 sm:text-3xl">What would you write in the margin?</p>
           </div>
@@ -322,7 +322,7 @@ export function LivingManuscript({ books, readerThoughts, settings }: Props) {
       {/* ============================================================
 05 / THE LETTER
 ============================================================ */}
-<section className="relative border-b border-ink/10 bg-paper py-28 sm:py-36 lg:py-44">
+<section className="relative border-b border-ink/10 bg-paper py-16 sm:py-20 lg:py-24">
   <div
     aria-hidden="true"
     className="absolute inset-y-0 left-[7.5%] w-px bg-accent/25"
@@ -373,7 +373,7 @@ export function LivingManuscript({ books, readerThoughts, settings }: Props) {
         </div>
 
         {/* Letter sheet */}
-        <div className="relative mt-14 sm:mt-20">
+        <div className="relative mt-10 sm:mt-14">
           
           {/* Offset paper edge */}
           <div
@@ -478,7 +478,7 @@ export function LivingManuscript({ books, readerThoughts, settings }: Props) {
     </div>
   </div>
 </section>
-      <section className="relative border-b border-ink/10 bg-paper-dark/30 py-24 sm:py-32 lg:py-36">
+      <section className="relative border-b border-ink/10 bg-paper-dark/30 py-16 sm:py-20 lg:py-24">
         <div aria-hidden="true" className="absolute inset-y-0 right-[7.5%] w-px bg-accent/20" />
         <div className="mx-auto max-w-[1440px] px-6 sm:px-10 lg:px-20">
           <div className="grid gap-12 lg:grid-cols-[0.55fr_1.45fr] lg:gap-24">
@@ -489,7 +489,7 @@ export function LivingManuscript({ books, readerThoughts, settings }: Props) {
             <div>
               <h2 className="font-display text-[clamp(3.5rem,6.5vw,7rem)] font-medium leading-[0.87] tracking-[-0.05em]">The margins.</h2>
               {readerThoughts.length > 0 ? (
-                <div className="mt-14 grid gap-0 border-t border-ink/15">
+                <div className="mt-10 grid gap-0 border-t border-ink/15">
                   {readerThoughts.slice(0, 3).map((thought, index) => (
                     <blockquote key={thought.id ?? index} className="relative grid gap-5 border-b border-ink/15 py-9 sm:grid-cols-[70px_minmax(0,1fr)] sm:gap-8 sm:py-12">
                       <span className="font-sans text-[0.55rem] uppercase tracking-[0.18em] text-accent">0{index + 1}</span>
@@ -501,7 +501,7 @@ export function LivingManuscript({ books, readerThoughts, settings }: Props) {
                   ))}
                 </div>
               ) : (
-                <div className="mt-14 border-t border-ink/15 py-10"><p className="font-serif text-xl text-ink-soft">The margins are waiting for your words.</p></div>
+                <div className="mt-8 border-t border-ink/15 py-6"><p className="font-serif text-xl text-ink-soft">The margins are waiting for your words.</p></div>
               )}
               <Link href="/testimonials" className="mt-8 inline-flex items-center gap-4 font-sans text-[0.6rem] uppercase tracking-[0.2em] text-ink-soft underline underline-offset-8">Read the reader notes <span aria-hidden="true" className="inline-block h-1.5 w-1.5 rotate-45 border-r border-t border-current transition-transform duration-300 group-hover:translate-x-1" /></Link>
             </div>
@@ -512,7 +512,7 @@ export function LivingManuscript({ books, readerThoughts, settings }: Props) {
       {/* ============================================================
           07 / THE AUTHOR'S DESK
       ============================================================ */}
-      <section className="relative border-b border-ink/10 py-24 sm:py-32 lg:py-36">
+      <section className="relative border-b border-ink/10 py-16 sm:py-20 lg:py-24">
         <div aria-hidden="true" className="absolute inset-y-0 left-[7.5%] w-px bg-accent/20" />
         <div className="mx-auto max-w-[1440px] px-6 sm:px-10 lg:px-20">
           <div className="grid items-end gap-10 lg:grid-cols-[1.4fr_0.6fr]">
@@ -522,7 +522,7 @@ export function LivingManuscript({ books, readerThoughts, settings }: Props) {
             <p className="max-w-sm font-serif text-lg leading-[1.75] text-ink-soft">New stories begin as fragments. A sentence. A memory. A page written too late at night.</p>
           </div>
 
-          <div className="mt-16 grid gap-px border border-ink/10 bg-ink/10 md:grid-cols-3">
+          <div className="mt-12 grid gap-px border border-ink/10 bg-ink/10 md:grid-cols-3">
             <Link href="/library" className="group min-h-[270px] bg-paper p-8 transition-colors duration-500 hover:bg-ink hover:text-paper sm:p-10">
               <h3 className="mt-20 font-display text-4xl font-medium">The Books</h3>
               <p className="mt-4 max-w-xs font-serif leading-relaxed text-ink-soft group-hover:text-paper/65">Enter the complete library.</p>
@@ -545,7 +545,7 @@ export function LivingManuscript({ books, readerThoughts, settings }: Props) {
       {/* ============================================================
           08 / THE LAST PAGE
       ============================================================ */}
-      <section className="relative flex min-h-[78svh] items-center py-24 sm:min-h-[82svh] sm:py-32 lg:py-40">
+      <section className="relative py-16 sm:py-20 lg:py-24">
         <div aria-hidden="true" className="absolute inset-y-0 left-[7.5%] w-px bg-accent/55" />
         <div className="mx-auto w-full max-w-[1440px] px-6 sm:px-10 lg:px-20">
           <div className="grid items-end gap-16 lg:grid-cols-[1.35fr_0.65fr]">
@@ -563,7 +563,7 @@ export function LivingManuscript({ books, readerThoughts, settings }: Props) {
             </div>
           </div>
 
-          <div className="mt-24 border-t border-ink/15 pt-8 sm:mt-32">
+          <div className="mt-12 border-t border-ink/15 pt-8 sm:mt-16">
             <div className="flex flex-col justify-between gap-5 sm:flex-row sm:items-end">
               <div>
                 <p className="font-sans text-xs font-medium uppercase tracking-[0.2em]">{siteName}</p>
