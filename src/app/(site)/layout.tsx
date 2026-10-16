@@ -1,3 +1,4 @@
+import PippinCompanion from "@/components/pet/PippinCompanion";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SkipLink } from "@/components/layout/SkipLink";
@@ -15,13 +16,14 @@ export default function SiteLayout({
     <>
       <ViewBeacon />
       <DevBanner />
-      <div className="flex min-h-screen flex-col">
+        <div className="flex min-h-screen flex-col">
         <SkipLink />
         <SiteHeader />
         <main id="main-content" className="flex-1">
           {children}
         </main>
         <SiteFooter />
+        <PippinCompanion />
       </div>
     </>
   );
