@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 
 export default function PippinCompanion() {
   const [isOpen, setIsOpen] = useState(true);
+  const [showGreeting, setShowGreeting] = useState(true);
 
   useEffect(() => {
     function handleKeyDown(event: KeyboardEvent) {
@@ -16,10 +17,43 @@ export default function PippinCompanion() {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, []);
 
+  // The floating "Hi!" greeting appears once when the companion first mounts.
+  // This component is rendered a single time in the persistent public layout,
+  // so mount happens only on the initial page load / full visit, not on
+  // client-side navigation — no session persistence is needed. The greeting
+  // is temporary and hides itself after a few seconds.
+  useEffect(() => {
+    const timer = window.setTimeout(() => setShowGreeting(false), 3800);
+    return () => window.clearTimeout(timer);
+  }, []);
+
   return (
     <div className="fixed bottom-4 left-4 z-40 flex flex-col items-start sm:bottom-6 sm:left-6">
+      <style>{`
+        @keyframes pippin-bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+        @keyframes pippin-hi { 0% { opacity: 0; transform: translateY(5px) scale(0.96); } 14% { opacity: 1; transform: translateY(0) scale(1); } 82% { opacity: 1; transform: translateY(0) scale(1); } 100% { opacity: 0; transform: translateY(-3px) scale(0.98); } }
+        @keyframes pippin-fade-rest { 0% { opacity: 1; } 8% { opacity: 0; } 30% { opacity: 0; } 42% { opacity: 1; } 54% { opacity: 0; } 76% { opacity: 0; } 100% { opacity: 1; } }
+        @keyframes pippin-fade-wave { 0% { opacity: 0; } 8% { opacity: 1; } 30% { opacity: 1; } 42% { opacity: 0; } 54% { opacity: 1; } 76% { opacity: 1; } 100% { opacity: 0; } }
+        .pippin-rest-layer { animation: pippin-bob 3.4s ease-in-out infinite, pippin-fade-rest 4.2s ease-in-out 0.5s 1 both; will-change: transform, opacity; }
+        .pippin-wave-layer { animation: pippin-bob 3.4s ease-in-out infinite, pippin-fade-wave 4.2s ease-in-out 0.5s 1 both; will-change: transform, opacity; }
+        .pippin-hi { animation: pippin-hi 3.8s ease-in-out forwards; }
+        @media (prefers-reduced-motion: reduce) {
+          .pippin-rest-layer { animation: none; }
+          .pippin-wave-layer { animation: none; }
+          .pippin-hi { animation: none; }
+        }
+      `}</style>
       {isOpen ? (
         <div className="relative mb-3 w-[min(350px,calc(100vw-2rem))] pb-3 pr-12 sm:pr-16">
+          {showGreeting ? (
+            <div
+              aria-hidden="true"
+              className="pippin-hi pointer-events-none absolute -top-11 right-8 z-30 rounded-full border border-[#efd8b5] bg-[#fffaf1] px-4 py-2 text-base font-semibold text-[#70451f] shadow-[0_6px_16px_rgba(65,43,25,0.16)] sm:-top-12 sm:right-12"
+            >
+              Hi! 👋
+            </div>
+          ) : null}
+
           <section
   id="pippin-message"
   aria-label="Pippin reading companion"
@@ -74,7 +108,14 @@ className="relative min-h-[135px] overflow-hidden rounded-[22px] border-2 border
               alt=""
               fill
               sizes="(max-width: 640px) 180px, 210px"
-              className="object-contain object-bottom"
+              className="object-contain object-bottom pippin-rest-layer"
+            />
+            <Image
+              src="/pets/pippin-wave.png"
+              alt=""
+              fill
+              sizes="(max-width: 640px) 180px, 210px"
+              className="object-contain object-bottom opacity-0 pippin-wave-layer"
             />
           </div>
         </div>
