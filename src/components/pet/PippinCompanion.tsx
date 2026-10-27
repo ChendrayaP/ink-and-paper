@@ -5,7 +5,9 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 
 export default function PippinCompanion() {
-  const [isOpen, setIsOpen] = useState(true);
+  // Start minimized as the compact bubble so the message card never covers
+  // page content; the full greeting card opens on tap. Positioning over hiding.
+  const [isOpen, setIsOpen] = useState(false);
   const [showGreeting, setShowGreeting] = useState(true);
 
   useEffect(() => {
@@ -120,22 +122,32 @@ className="relative min-h-[135px] overflow-hidden rounded-[22px] border-2 border
           </div>
         </div>
       ) : (
-        <button
-          type="button"
-          onClick={() => setIsOpen(true)}
-          aria-label="Meet Pippin, your reading companion"
-          aria-expanded={false}
-          aria-controls="pippin-message"
-          className="relative flex h-[76px] w-[76px] items-center justify-center overflow-hidden rounded-full border border-[#dfbd83] bg-[#fff8ec] p-0 shadow-[0_4px_16px_rgba(65,43,25,0.18)] transition-transform duration-200 hover:scale-105 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#8b603d] motion-reduce:transition-none"
-        >
-          <Image
-            src="/pets/pippin-transparent.png"
-            alt=""
-            fill
-            sizes="76px"
-            className="scale-125 rounded-full object-cover"
-          />
-        </button>
+        <div className="relative">
+          {showGreeting ? (
+            <div
+              aria-hidden="true"
+              className="pippin-hi pointer-events-none absolute bottom-[86px] left-1 z-30 whitespace-nowrap rounded-full border border-[#efd8b5] bg-[#fffaf1] px-4 py-2 text-base font-semibold text-[#70451f] shadow-[0_6px_16px_rgba(65,43,25,0.16)]"
+            >
+              Hi! 👋
+            </div>
+          ) : null}
+          <button
+            type="button"
+            onClick={() => setIsOpen(true)}
+            aria-label="Meet Pippin, your reading companion"
+            aria-expanded={false}
+            aria-controls="pippin-message"
+            className="relative flex h-[76px] w-[76px] items-center justify-center overflow-hidden rounded-full border border-[#dfbd83] bg-[#fff8ec] p-0 shadow-[0_4px_16px_rgba(65,43,25,0.18)] transition-transform duration-200 hover:scale-105 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#8b603d] motion-reduce:transition-none"
+          >
+            <Image
+              src="/pets/pippin-transparent.png"
+              alt=""
+              fill
+              sizes="76px"
+              className="scale-125 rounded-full object-cover"
+            />
+          </button>
+        </div>
       )}
     </div>
   );
