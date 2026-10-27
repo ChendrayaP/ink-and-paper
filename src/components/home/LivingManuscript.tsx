@@ -295,7 +295,16 @@ export function LivingManuscript({ books, readerThoughts, settings }: Props) {
       {/* ============================================================
           04 / THE UNSAID
       ============================================================ */}
-      <section className="relative overflow-hidden border-b border-ink/10 bg-ink py-16 text-paper sm:py-20 lg:py-24">
+      <section
+        className="relative overflow-hidden border-b border-ink/10 bg-ink py-16 text-paper sm:py-20 lg:py-24"
+        style={{
+          // Cinematic depth for the emotional centerpiece: a very subtle warm
+          // espresso-dark gradient. Starts at the existing --color-ink (#2c211a)
+          // and eases gently toward #211812. bg-ink above is the fallback color.
+          backgroundImage:
+            "linear-gradient(180deg, var(--color-ink) 0%, #211812 100%)",
+        }}
+      >
         <div aria-hidden="true" className="absolute inset-y-0 left-[7.5%] w-px bg-accent/70" />
         <div className="mx-auto max-w-[1440px] px-6 sm:px-10 lg:px-20">
           <div className="flex items-start justify-between gap-10">

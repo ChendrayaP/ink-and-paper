@@ -34,6 +34,17 @@ html {
 
 body {
   background-color: var(--color-paper);
+  /* Subtle depth: a soft, fixed wash of the lighter "raised" paper tone near
+     the top, fading to the base paper. No texture, no banding, no strong
+     gradient — just a gentle sense of light on the page. Text contrast is
+     unaffected (both tones are very light under the espresso ink). */
+  background-image: radial-gradient(
+    1200px 720px at 50% 0%,
+    color-mix(in srgb, var(--color-paper-raised) 55%, transparent) 0%,
+    transparent 62%
+  );
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   color: var(--color-ink);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
