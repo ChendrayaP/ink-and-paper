@@ -110,7 +110,7 @@ export function LivingManuscript({ books, readerThoughts, settings }: Props) {
           Stories written for the moments that remain long after the page has been turned.
         </p>
 
-        <div className="mt-12 space-y-2 font-sans text-[0.52rem] uppercase tracking-[0.2em] text-ink-soft/65">
+        <div className="mt-12 space-y-2 font-sans text-[0.52rem] font-semibold uppercase tracking-[0.25em] text-ink">
           <p>Est. 2026</p>
           <p>Written by P Chendraya Perumal</p>
         </div>
