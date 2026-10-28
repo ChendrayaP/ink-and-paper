@@ -3,6 +3,9 @@ import { MobileNav } from "@/components/layout/MobileNav";
 import { getSiteSettings } from "@/lib/data/site";
 import { PUBLIC_NAV, START_READING_HREF } from "@/lib/nav";
 
+const navLinkClass =
+  "relative whitespace-nowrap rounded-[2px] font-sans text-[0.85rem] font-semibold uppercase tracking-[0.14em] text-ink after:pointer-events-none after:absolute after:inset-x-0 after:-bottom-1.5 after:h-0.5 after:origin-left after:scale-x-0 after:bg-accent after:transition-transform after:duration-300 hover:after:scale-x-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent focus-visible:after:scale-x-100";
+
 export async function SiteHeader() {
   const { instagramUrl } = await getSiteSettings();
 
@@ -41,7 +44,7 @@ export async function SiteHeader() {
                   href={item.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="whitespace-nowrap font-sans text-[0.8rem] uppercase tracking-[0.1em] text-ink-soft transition-colors hover:text-ink"
+                  className={navLinkClass}
                 >
                   {item.label}
                 </a>
@@ -49,7 +52,7 @@ export async function SiteHeader() {
                 <a
                   key={item.href}
                   href={item.href}
-                  className="whitespace-nowrap font-sans text-[0.8rem] uppercase tracking-[0.1em] text-ink-soft transition-colors hover:text-ink"
+                  className={navLinkClass}
                 >
                   {item.label}
                 </a>
@@ -61,7 +64,7 @@ export async function SiteHeader() {
                 href={instagramUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="whitespace-nowrap font-sans text-[0.78rem] uppercase tracking-[0.12em] text-ink-soft transition-colors hover:text-ink"
+                className={navLinkClass}
               >
                 Instagram
               </a>
