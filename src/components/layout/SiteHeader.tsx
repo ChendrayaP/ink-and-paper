@@ -11,9 +11,9 @@ export async function SiteHeader() {
 
   return (
     <header className="border-b border-line">
-      <div className="mx-auto flex w-full max-w-[1200px] items-center justify-between gap-6 px-4 py-4 sm:px-6 sm:py-5">
+      <div className="mx-auto flex w-full max-w-[1200px] items-center justify-between gap-6 px-4 py-3 sm:px-6">
         {/* Brand — complete logo, top-left */}
-        <div className="shrink-0">
+        <div className="flex shrink-0 flex-col items-center">
           <Link
             href="/"
             aria-label="Ink & Paper — Stories for a Brighter You"
@@ -28,6 +28,9 @@ export async function SiteHeader() {
               className="h-20 w-auto sm:h-24 lg:h-32"
             />
           </Link>
+          <p className="mt-1 whitespace-nowrap text-center font-sans text-[0.6rem] font-medium uppercase tracking-[0.2em] text-ink sm:mt-1.5 sm:text-[0.66rem] lg:mt-2 lg:text-[0.72rem]">
+            P Chendraya Perumal
+          </p>
         </div>
 
         {/* Right side — desktop navigation + CTA, mobile menu */}
