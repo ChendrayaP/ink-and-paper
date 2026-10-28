@@ -5,9 +5,10 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 
 export default function PippinCompanion() {
-  // Start minimized as the compact bubble so the message card never covers
-  // page content; the full greeting card opens on tap. Positioning over hiding.
-  const [isOpen, setIsOpen] = useState(false);
+  // Start with the greeting panel open on first load so visitors see Pippin's
+  // welcome; the close button collapses it to the compact bubble, which reopens
+  // the panel on tap.
+  const [isOpen, setIsOpen] = useState(true);
   const [showGreeting, setShowGreeting] = useState(true);
 
   useEffect(() => {
