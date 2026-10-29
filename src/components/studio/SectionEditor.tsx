@@ -4,6 +4,7 @@ import { useEffect, useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { updateSection } from "@/lib/studio/actions";
 import { Field, TextInput, TextArea } from "@/components/studio/Field";
+import { ManuscriptContent } from "@/components/reader/ManuscriptContent";
 import type { ChapterKind } from "@/lib/types";
 
 export function SectionEditor({
@@ -25,6 +26,7 @@ export function SectionEditor({
   const [content, setContent] = useState(section.content);
   const [baseUpdatedAt, setBaseUpdatedAt] = useState(section.updatedAt);
   const [msg, setMsg] = useState<{ ok: boolean; text: string } | null>(null);
+  const [showPreview, setShowPreview] = useState(true);
 
   const dirty = title !== section.title || content !== section.content;
 
@@ -76,6 +78,45 @@ export function SectionEditor({
           <TextArea id="s-content" value={content} onChange={setContent} rows={20} serif />
         </Field>
       </div>
+
+      {/* Live preview — renders through the real reader component so paragraph
+          spacing, blank lines, and deliberate line breaks are visible while
+          editing. The text is still stored exactly as typed. */}
+      <div className="mt-8">
+        <div className="flex items-center justify-between gap-4">
+          <p className="font-sans text-sm text-ink">Live Reader Preview</p>
+          <button
+            type="button"
+            onClick={() => setShowPreview((v) => !v)}
+            aria-expanded={showPreview}
+            aria-controls="s-content-preview"
+            className="font-sans text-xs text-accent underline-offset-2 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+          >
+            {showPreview ? "Hide" : "Show"}
+          </button>
+        </div>
+        {showPreview ? (
+          <>
+            <p className="mt-1.5 font-sans text-xs text-ink-soft">
+              How this will appear to readers — paragraph spacing and line breaks
+              update as you type.
+            </p>
+            <div
+              id="s-content-preview"
+              className="mt-3 rounded-[2px] border border-line bg-paper px-5 py-6 sm:px-7 sm:py-8"
+            >
+              {content.trim() ? (
+                <ManuscriptContent content={content} />
+              ) : (
+                <p className="font-sans text-sm text-ink-soft">
+                  Paste or type the text above to see the reader preview here.
+                </p>
+              )}
+            </div>
+          </>
+        ) : null}
+      </div>
+
       <div className="sticky bottom-0 mt-6 flex items-center gap-4 bg-paper py-4">
         <button
           type="button"
