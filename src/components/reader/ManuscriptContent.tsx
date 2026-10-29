@@ -2,12 +2,13 @@ import { Fragment } from "react";
 
 /*
   Renders manuscript text EXACTLY as stored — no rewriting, summarising, or
-  Markdown interpretation. Blank lines separate paragraphs; single line breaks
+  Markdown interpretation. Blank lines (even if they hold only spaces or tabs)
+  separate paragraphs; single line breaks
   within a paragraph are preserved (so poetry and deliberate breaks survive).
   React escapes all text, so content is shown literally and safely.
 */
 export function ManuscriptContent({ content }: { content: string }) {
-  const paragraphs = content.replace(/\r\n/g, "\n").split(/\n{2,}/);
+  const paragraphs = content.replace(/\r\n/g, "\n").split(/\n(?:[^\S\n]*\n)+/);
   // Presentation-only: hide standalone divider lines that consist solely of
   // hyphens (the manuscript's chapter/epilogue rule, e.g. a run of "-----").
   // Stored content is never modified; the epigraph, ❤️, and all other prose,
@@ -16,7 +17,9 @@ export function ManuscriptContent({ content }: { content: string }) {
   return (
     <div className="mx-auto max-w-[68ch] space-y-9 font-serif text-[1.18rem] leading-[1.95] text-ink sm:text-[1.22rem] sm:leading-[2]">
       {paragraphs.map((block, i) => {
-        const lines = block.split("\n").filter((line) => !isDivider(line));
+        const lines = block
+          .split("\n")
+          .filter((line) => !isDivider(line) && line.trim() !== "");
         if (lines.length === 0) return null;
         return (
           <p key={i} className={i === 0 ? "pt-1 first-letter:text-[1.35em]" : ""}>
