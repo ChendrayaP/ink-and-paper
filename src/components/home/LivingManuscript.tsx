@@ -215,7 +215,6 @@ export function LivingManuscript({ books, readerThoughts, settings }: Props) {
           03 / THE STORIES
       ============================================================ */}
       <section className="relative border-b border-ink/10 py-12 sm:py-16 lg:py-20">
-        <div aria-hidden="true" className="absolute inset-y-0 left-[7.5%] w-px bg-accent/25" />
         <div className="mx-auto max-w-[1440px] px-6 sm:px-10 lg:px-20">
           <div className="flex items-end justify-between gap-8 border-b border-ink/15 pb-8">
             <div>
@@ -277,7 +276,6 @@ export function LivingManuscript({ books, readerThoughts, settings }: Props) {
                       </div>
                     </div>
                     <div>
-                      <p className="font-sans text-[0.56rem] uppercase tracking-[0.22em] text-accent">0{index + 2} / Another story</p>
                       <h3 className="mt-3 font-display text-3xl font-medium leading-[0.95] tracking-[-0.025em] sm:text-4xl">{title}</h3>
                       {subtitle ? <p className="mt-4 font-serif leading-relaxed text-ink-soft">{subtitle}</p> : null}
                       {slug ? <Link href={`/books/${slug}`} className="mt-6 inline-flex border-b border-ink/25 pb-2 font-sans text-[0.58rem] uppercase tracking-[0.18em] hover:border-ink">Open ↗</Link> : null}
@@ -305,7 +303,6 @@ export function LivingManuscript({ books, readerThoughts, settings }: Props) {
             "linear-gradient(180deg, var(--color-ink) 0%, #211812 100%)",
         }}
       >
-        <div aria-hidden="true" className="absolute inset-y-0 left-[7.5%] w-px bg-accent/70" />
         <div className="mx-auto max-w-[1440px] px-6 sm:px-10 lg:px-20">
           <div className="flex items-start justify-between gap-10">
             <div aria-hidden="true" />
@@ -314,7 +311,7 @@ export function LivingManuscript({ books, readerThoughts, settings }: Props) {
 
           <div className="mt-10 sm:mt-14">
             {unsaidLines.map((line, index) => (
-              <div key={line} className="group grid grid-cols-[30px_minmax(0,1fr)] items-baseline border-b border-paper/10 py-5 sm:grid-cols-[55px_minmax(0,1fr)] sm:py-8">
+              <div key={line} className="group grid grid-cols-[30px_minmax(0,1fr)] items-baseline py-5 sm:grid-cols-[55px_minmax(0,1fr)] sm:py-8">
                 <span aria-hidden="true" />
                 <p className="min-w-0 max-w-full font-display text-[clamp(2rem,6vw,7.5rem)] font-medium leading-[0.86] tracking-[-0.045em] text-paper/90 transition-transform duration-500 group-hover:translate-x-3">{line}</p>
               </div>
@@ -332,11 +329,6 @@ export function LivingManuscript({ books, readerThoughts, settings }: Props) {
 05 / THE LETTER
 ============================================================ */}
 <section className="relative border-b border-ink/10 bg-paper py-16 sm:py-20 lg:py-24">
-  <div
-    aria-hidden="true"
-    className="absolute inset-y-0 left-[7.5%] w-px bg-accent/25"
-  />
-
   <div className="mx-auto max-w-[1440px] px-6 sm:px-10 lg:px-20">
     <div className="grid gap-14 lg:grid-cols-[0.42fr_1.58fr] lg:gap-24">
       
@@ -488,7 +480,6 @@ export function LivingManuscript({ books, readerThoughts, settings }: Props) {
   </div>
 </section>
       <section className="relative border-b border-ink/10 bg-paper-dark/30 py-16 sm:py-20 lg:py-24">
-        <div aria-hidden="true" className="absolute inset-y-0 right-[7.5%] w-px bg-accent/20" />
         <div className="mx-auto max-w-[1440px] px-6 sm:px-10 lg:px-20">
           <div className="grid gap-12 lg:grid-cols-[0.55fr_1.45fr] lg:gap-24">
             <div>
@@ -522,7 +513,6 @@ export function LivingManuscript({ books, readerThoughts, settings }: Props) {
           07 / THE AUTHOR'S DESK
       ============================================================ */}
       <section className="relative border-b border-ink/10 py-16 sm:py-20 lg:py-24">
-        <div aria-hidden="true" className="absolute inset-y-0 left-[7.5%] w-px bg-accent/20" />
         <div className="mx-auto max-w-[1440px] px-6 sm:px-10 lg:px-20">
           <div className="grid items-end gap-10 lg:grid-cols-[1.4fr_0.6fr]">
             <div>
@@ -532,18 +522,18 @@ export function LivingManuscript({ books, readerThoughts, settings }: Props) {
           </div>
 
           <div className="mt-12 grid gap-px border border-ink/10 bg-ink/10 md:grid-cols-3">
-            <Link href="/library" className="group min-h-[270px] bg-paper p-8 transition-colors duration-500 hover:bg-ink hover:text-paper sm:p-10">
-              <h3 className="mt-20 font-display text-4xl font-medium">The Books</h3>
+            <Link href="/library" className="group flex min-h-[270px] flex-col items-center justify-center text-center bg-paper p-8 transition-colors duration-500 hover:bg-ink hover:text-paper sm:p-10">
+              <h3 className="font-display text-4xl font-medium">The Books</h3>
               <p className="mt-4 max-w-xs font-serif leading-relaxed text-ink-soft group-hover:text-paper/65">Enter the complete library.</p>
               <span className="mt-8 block font-sans text-[0.58rem] uppercase tracking-[0.18em]">Explore ↗</span>
             </Link>
-            <Link href="/about" className="group min-h-[270px] bg-paper p-8 transition-colors duration-500 hover:bg-ink hover:text-paper sm:p-10">
-              <h3 className="mt-20 font-display text-4xl font-medium">The Author</h3>
+            <Link href="/about" className="group flex min-h-[270px] flex-col items-center justify-center text-center bg-paper p-8 transition-colors duration-500 hover:bg-ink hover:text-paper sm:p-10">
+              <h3 className="font-display text-4xl font-medium">The Author</h3>
               <p className="mt-4 max-w-xs font-serif leading-relaxed text-ink-soft group-hover:text-paper/65">Meet the person behind the pages.</p>
               <span className="mt-8 block font-sans text-[0.58rem] uppercase tracking-[0.18em]">Read the letter ↗</span>
             </Link>
-            <a href="https://www.instagram.com/author.pchendraya/" target="_blank" rel="noopener noreferrer" className="group min-h-[270px] bg-paper p-8 transition-colors duration-500 hover:bg-ink hover:text-paper sm:p-10">
-              <h3 className="mt-20 font-display text-4xl font-medium">Instagram</h3>
+            <a href="https://www.instagram.com/author.pchendraya/" target="_blank" rel="noopener noreferrer" className="group flex min-h-[270px] flex-col items-center justify-center text-center bg-paper p-8 transition-colors duration-500 hover:bg-ink hover:text-paper sm:p-10">
+              <h3 className="font-display text-4xl font-medium">Instagram</h3>
               <p className="mt-4 max-w-xs font-serif leading-relaxed text-ink-soft group-hover:text-paper/65">A glimpse beyond the page.</p>
               <span className="mt-8 block font-sans text-[0.58rem] uppercase tracking-[0.18em]">Visit the desk ↗</span>
             </a>
@@ -555,7 +545,6 @@ export function LivingManuscript({ books, readerThoughts, settings }: Props) {
           08 / THE LAST PAGE
       ============================================================ */}
       <section className="relative py-16 sm:py-20 lg:py-24">
-        <div aria-hidden="true" className="absolute inset-y-0 left-[7.5%] w-px bg-accent/55" />
         <div className="mx-auto w-full max-w-[1440px] px-6 sm:px-10 lg:px-20">
           <div className="grid items-end gap-16 lg:grid-cols-[1.35fr_0.65fr]">
             <div>
